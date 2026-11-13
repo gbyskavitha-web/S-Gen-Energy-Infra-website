@@ -236,6 +236,24 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; color: var(--n
 /* =========================================================
    HERO SLIDER
    ========================================================= */
+
+/* Video slide (slide 1) — the video fills the slide like a photo */
+.hero-slide-video { background: var(--navy-900); }
+.hero-slide-video .hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* video fills the whole banner */
+  object-position: center 52%;    /* middle-lower part: shows the buses */
+}
+/* lighter, even shade on the video slide so the whole video is clearly visible
+   (the normal overlay is very dark on the left half) */
+.hero-slide-video .hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(6, 21, 40, 0.55) 0%, rgba(6, 21, 40, 0.30) 50%, rgba(6, 21, 40, 0.10) 100%),
+    linear-gradient(0deg, rgba(6, 21, 40, 0.35), transparent 40%);
+}
 .hero-viewport {
   position: relative;
   height: calc(100vh - var(--header-h) - var(--topbar-h));
@@ -342,31 +360,6 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; color: var(--n
 
 @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-/* Arrows */
-.hero-controls {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  pointer-events: none;
-}
-.hero-controls .hero-arrow { pointer-events: auto; }
-.hero-arrow {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  transition: background 0.25s, border-color 0.25s;
-}
-.hero-arrow svg { width: 22px; height: 22px; }
-.hero-arrow:hover { background: #1a7a02; border-color: #1a7a02; }
 
 /* Dots */
 .hero-pagination {
@@ -515,7 +508,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; color: var(--n
   background: var(--grad-brand);
   border-radius: 20px;
   padding: 48px;
-  color: #ffffffff;
+  color: #ffffff;
   position: relative;
   overflow: hidden;
 }
@@ -933,7 +926,6 @@ body.no-scroll { overflow: hidden; }
   .section-head { margin-bottom: 40px; }
   .hero-viewport { min-height: 520px; }
   .hero-content { align-items: flex-start; }
-  .hero-controls { display: none; }
   .hero-pagination { bottom: 30px; }
   .vmv-grid, .service-grid, .products-grid, .policy-grid, .jobs-grid { grid-template-columns: 1fr; }
   .vmv-grid { margin-top: 90px; }

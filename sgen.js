@@ -150,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ---------- Progress bar ---------- */
     function restartProgress() {
       if (!progressBar) return;
+      progressBar.style.setProperty("--auto", `${slideTime()}ms`);
       progressBar.classList.remove("run");
       void progressBar.offsetWidth; // force reflow so animation restarts
       progressBar.classList.add("run");
@@ -173,11 +174,34 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    /* ---------- Hero video (slide 1): wide video for laptop, tall for mobile ---------- */
+    const heroVideo = document.getElementById("heroVideo");
+    if (heroVideo) {
+      const isTall = window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+      heroVideo.src = isTall ? heroVideo.dataset.tall : heroVideo.dataset.wide;
+    }
+    // play the video only while its slide is showing, from the start each time
+    function syncVideo(index) {
+      if (!heroVideo) return;
+      if (slides[index].contains(heroVideo)) {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+    }
+
+    // each slide can have its own time: data-duration="18000" (ms). Others use AUTO_TIME.
+    function slideTime() {
+      return Number(slides[current].dataset.duration) || AUTO_TIME;
+    }
+
     /* ---------- Show slide ---------- */
     function showSlide(index, restart = false) {
       slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
       dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
       animateHeroWords();
+      syncVideo(index);
       restartProgress();
       if (restart) startAuto();
     }
@@ -186,8 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
 
     /* ---------- Auto slide ---------- */
-    function startAuto() { stopAuto(); autoTimer = setInterval(nextSlide, AUTO_TIME); pauseProgress(false); }
-    function stopAuto()  { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+    function startAuto() {
+      stopAuto();
+      autoTimer = setTimeout(() => { nextSlide(); startAuto(); }, slideTime());
+      pauseProgress(false);
+    }
+    function stopAuto() { if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; } }
 
     showSlide(current);
     startAuto();
@@ -208,10 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
       });
     }
-
-    /* ---------- Arrows ---------- */
-    document.getElementById("nextSlide")?.addEventListener("click", () => { nextSlide(); startAuto(); });
-    document.getElementById("prevSlide")?.addEventListener("click", () => { prevSlide(); startAuto(); });
 
     /* ---------- Swipe on mobile ---------- */
     let touchX = null;
