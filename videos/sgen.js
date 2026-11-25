@@ -1,30 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   /* =========================================================
      BASIC ELEMENTS
      ========================================================= */
-  const header      = document.getElementById("siteHeader");
-  const menuBtn     = document.getElementById("menuBtn");
-  const mainNav     = document.getElementById("mainNav");
-  const yearEl      = document.getElementById("year");
-  const backToTop   = document.getElementById("backToTop");
+  const header = document.getElementById("siteHeader");
+  const menuBtn = document.getElementById("menuBtn");
+  const mainNav = document.getElementById("mainNav");
+  const yearEl = document.getElementById("year");
+  const backToTop = document.getElementById("backToTop");
 
-  const slides      = Array.from(document.querySelectorAll(".hero-slide"));
-  const dotsWrap    = document.getElementById("heroPagination");
-  const hero        = document.querySelector(".hero-viewport");
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  const dotsWrap = document.getElementById("heroPagination");
+  const hero = document.querySelector(".hero-viewport");
   const progressBar = document.getElementById("heroProgress");
 
-  const applyModal  = document.getElementById("applyFormWrap");
+  const applyModal = document.getElementById("applyFormWrap");
   const careersForm = document.getElementById("careersForm");
   const contactForm = document.getElementById("contactForm");
   const appliedRole = document.getElementById("appliedRole");
-
 
   /* =========================================================
      FOOTER YEAR
      ========================================================= */
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
 
   /* =========================================================
      MOBILE MENU
@@ -43,14 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Close menu after clicking a link (mobile)
-    mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    mainNav
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
 
     // Close menu when clicking outside
     document.addEventListener("click", (event) => {
-      if (!mainNav.contains(event.target) && !menuBtn.contains(event.target)) closeMenu();
+      if (!mainNav.contains(event.target) && !menuBtn.contains(event.target))
+        closeMenu();
     });
   }
-
 
   /* =========================================================
      SERVICES DROPDOWN (mobile: tap the arrow)
@@ -72,13 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
   /* =========================================================
      HERO SLIDER
      ========================================================= */
   if (slides.length) {
     let current = 0;
     let autoTimer = null;
+    let isHovering = false; // true while the mouse is on the hero banner
+    let leaveTimer = null;
+    let mouseX = -1; // last mouse position on the page
+    let mouseY = -1;
+    let wasInside = false;
+    let lastTouch = 0; // phones: ignore the fake mouse events that come after a tap
     const AUTO_TIME = 6000;
 
     if (progressBar) progressBar.style.setProperty("--auto", `${AUTO_TIME}ms`);
@@ -108,7 +112,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const letterEl = document.createElement("span");
                 letterEl.className = "hero-letter";
                 letterEl.textContent = letter;
-                letterEl.style.setProperty("--letter-delay", `${0.2 + letterIndex * 0.03}s`);
+                letterEl.style.setProperty(
+                  "--letter-delay",
+                  `${0.2 + letterIndex * 0.03}s`,
+                );
                 word.appendChild(letterEl);
                 letterIndex++;
               });
@@ -128,12 +135,16 @@ document.addEventListener("DOMContentLoaded", () => {
           if (node.nodeType === Node.ELEMENT_NODE) {
             const clone = node.cloneNode(false);
             parent.appendChild(clone);
-            Array.from(node.childNodes).forEach((child) => processNode(child, clone));
+            Array.from(node.childNodes).forEach((child) =>
+              processNode(child, clone),
+            );
           }
         }
 
         const fragment = document.createDocumentFragment();
-        Array.from(heading.childNodes).forEach((child) => processNode(child, fragment));
+        Array.from(heading.childNodes).forEach((child) =>
+          processNode(child, fragment),
+        );
         heading.innerHTML = "";
         heading.appendChild(fragment);
         heading.dataset.wordsAnimated = "true";
@@ -141,10 +152,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function animateHeroWords() {
-      document.querySelectorAll(".hero-slide h1").forEach((h) => h.classList.remove("animate-words"));
+      document
+        .querySelectorAll(".hero-slide h1")
+        .forEach((h) => h.classList.remove("animate-words"));
       const activeHeading = document.querySelector(".hero-slide.active h1");
       if (!activeHeading) return;
-      requestAnimationFrame(() => requestAnimationFrame(() => activeHeading.classList.add("animate-words")));
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() =>
+          activeHeading.classList.add("animate-words"),
+        ),
+      );
     }
 
     /* ---------- Progress bar ---------- */
@@ -156,7 +173,8 @@ document.addEventListener("DOMContentLoaded", () => {
       progressBar.classList.add("run");
     }
     function pauseProgress(paused) {
-      if (progressBar) progressBar.style.animationPlayState = paused ? "paused" : "running";
+      if (progressBar)
+        progressBar.style.animationPlayState = paused ? "paused" : "running";
     }
 
     wrapHeroWords();
@@ -168,7 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const dot = document.createElement("button");
         dot.type = "button";
         dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-        dot.addEventListener("click", () => { current = index; showSlide(current, true); });
+        dot.addEventListener("click", () => {
+          current = index;
+          showSlide(current, true);
+        });
         dots.push(dot);
         dotsWrap.appendChild(dot);
       });
@@ -177,7 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ---------- Hero video (slide 1): wide video for laptop, tall for mobile ---------- */
     const heroVideo = document.getElementById("heroVideo");
     if (heroVideo) {
-      const isTall = window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+      const isTall = window.matchMedia(
+        "(max-width: 768px) and (orientation: portrait)",
+      ).matches;
       heroVideo.src = isTall ? heroVideo.dataset.tall : heroVideo.dataset.wide;
     }
     // play the video only while its slide is showing, from the start each time
@@ -198,71 +221,157 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ---------- Show slide ---------- */
     function showSlide(index, restart = false) {
-      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      slides.forEach((slide, i) =>
+        slide.classList.toggle("active", i === index),
+      );
       dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
       animateHeroWords();
       syncVideo(index);
       restartProgress();
+      if (isHovering) {
+        stopAuto();
+        pauseProgress(true);
+        return;
+      }
       if (restart) startAuto();
     }
 
-    function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
-    function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
 
     /* ---------- Auto slide ---------- */
+    // true when the mouse is on the hero banner (checked two ways, so it never misses)
+    function mouseOnHero() {
+      return isHovering || pointInHero();
+    }
+
     function startAuto() {
       stopAuto();
-      autoTimer = setTimeout(() => { nextSlide(); startAuto(); }, slideTime());
+      if (mouseOnHero()) {
+        pauseProgress(true); // mouse is on the banner: stay on this slide
+        return;
+      }
+      autoTimer = setTimeout(() => {
+        if (mouseOnHero()) {
+          pauseProgress(true); // mouse came onto the banner: don't move
+          return;
+        }
+        nextSlide();
+        startAuto();
+      }, slideTime());
       pauseProgress(false);
     }
-    function stopAuto() { if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; } }
+    function stopAuto() {
+      if (autoTimer) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+    }
 
     showSlide(current);
     startAuto();
 
     /* ---------- Pause on hover, go to next slide 1 sec after cursor leaves ---------- */
-    let leaveTimer = null;
-    if (hero && matchMedia("(hover: hover)").matches) {
-      hero.addEventListener("mouseenter", () => {
+    // We watch where the mouse is on the whole page and check if it is inside the banner.
+    // This works the same in Firefox, Chrome and Edge.
+
+    function pointInHero() {
+      if (!hero || mouseX < 0) return false;
+      const r = hero.getBoundingClientRect();
+      return mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom;
+    }
+
+    function checkMouse() {
+      const inside = pointInHero();
+      if (inside && !wasInside) {
+        // mouse came onto the banner: stop
+        isHovering = true;
         clearTimeout(leaveTimer);
         stopAuto();
         pauseProgress(true);
-      });
-      hero.addEventListener("mouseleave", () => {
+      } else if (!inside && wasInside) {
+        // mouse left the banner: next slide after 1 second, then continue
+        isHovering = false;
         clearTimeout(leaveTimer);
         leaveTimer = setTimeout(() => {
-          nextSlide();   // next slide 1 second after cursor leaves
-          startAuto();   // then continue every 6 seconds
+          nextSlide();
+          startAuto();
         }, 1000);
-      });
+      }
+      wasInside = inside;
     }
+
+    document.addEventListener("touchstart", () => { lastTouch = Date.now(); }, { passive: true });
+    document.addEventListener("mousemove", (e) => {
+      if (Date.now() - lastTouch < 1000) return;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      checkMouse();
+    });
+    // scrolling moves the banner under a still mouse, so check again
+    window.addEventListener("scroll", checkMouse, { passive: true });
+    // mouse went out of the browser window
+    document.documentElement.addEventListener("mouseleave", () => {
+      mouseX = -1;
+      mouseY = -1;
+      checkMouse();
+    });
 
     /* ---------- Swipe on mobile ---------- */
     let touchX = null;
-    hero?.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    hero?.addEventListener(
+      "touchstart",
+      (e) => {
+        touchX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
     hero?.addEventListener("touchend", (e) => {
       if (touchX === null) return;
       const diff = e.changedTouches[0].clientX - touchX;
-      if (Math.abs(diff) > 50) { diff < 0 ? nextSlide() : prevSlide(); startAuto(); }
+      if (Math.abs(diff) > 50) {
+        diff < 0 ? nextSlide() : prevSlide();
+        startAuto();
+      }
       touchX = null;
     });
 
     /* ---------- Keyboard arrows ---------- */
     document.addEventListener("keydown", (e) => {
       if (applyModal?.classList.contains("open")) return;
-      if (e.key === "ArrowRight") { nextSlide(); startAuto(); }
-      if (e.key === "ArrowLeft")  { prevSlide(); startAuto(); }
+      if (document.getElementById("lightbox")?.classList.contains("open"))
+        return;
+      if (e.key === "ArrowRight") {
+        nextSlide();
+        startAuto();
+      }
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        startAuto();
+      }
     });
   }
-
 
   /* =========================================================
      HEADER SHADOW + ACTIVE NAV LINK + BACK TO TOP
      ========================================================= */
-  const navLinks = Array.from(document.querySelectorAll("#mainNav a")).filter((a) => {
-    const href = a.getAttribute("href") || "";
-    return href.startsWith("#") && href.length > 1 && !a.classList.contains("nav-cta-mobile") && !a.closest(".dropdown-menu");
-  });
+  const navLinks = Array.from(document.querySelectorAll("#mainNav a")).filter(
+    (a) => {
+      const href = a.getAttribute("href") || "";
+      return (
+        href.startsWith("#") &&
+        href.length > 1 &&
+        !a.classList.contains("nav-cta-mobile") &&
+        !a.closest(".dropdown-menu")
+      );
+    },
+  );
 
   function onScroll() {
     const y = window.scrollY;
@@ -278,15 +387,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const section = document.querySelector(a.getAttribute("href"));
       if (!section) return;
       const top = section.getBoundingClientRect().top + window.scrollY;
-      if (top <= probe && top > best) { best = top; activeHref = a.getAttribute("href"); }
+      if (top <= probe && top > best) {
+        best = top;
+        activeHref = a.getAttribute("href");
+      }
     });
 
-    navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === activeHref));
+    // Our Projects is part of Services, so highlight "Services" there
+    const projects = document.getElementById("projects");
+    if (projects) {
+      const pTop = projects.getBoundingClientRect().top + window.scrollY;
+      if (pTop <= probe && pTop > best) activeHref = "#services";
+    }
+
+    navLinks.forEach((a) =>
+      a.classList.toggle("active", a.getAttribute("href") === activeHref),
+    );
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
 
   /* =========================================================
      SCROLL REVEAL ANIMATION
@@ -294,31 +414,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealEls = document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
 
     // Small stagger for cards placed side by side
     revealEls.forEach((el) => {
-      const siblings = Array.from(el.parentElement.children).filter((c) => c.classList.contains("reveal"));
+      const siblings = Array.from(el.parentElement.children).filter((c) =>
+        c.classList.contains("reveal"),
+      );
       const i = siblings.indexOf(el);
-      if (siblings.length > 1) el.style.transitionDelay = `${Math.min(i, 5) * 0.08}s`;
+      if (siblings.length > 1)
+        el.style.transitionDelay = `${Math.min(i, 5) * 0.08}s`;
       observer.observe(el);
     });
   } else {
     revealEls.forEach((el) => el.classList.add("in-view"));
   }
 
-
   /* =========================================================
      CARD CLICK — ZOOM IN & OUT ANIMATION
      ========================================================= */
-  document.querySelectorAll(".vmv-card, .service-card, .product-card, .policy-card, .job-card")
+  document
+    .querySelectorAll(
+      ".vmv-card, .service-card, .product-card, .policy-card, .job-card, .leader-card",
+    )
     .forEach((card) => {
       card.addEventListener("click", (event) => {
         // Don't animate when a button or link inside the card is clicked
@@ -328,15 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
         void card.offsetWidth; // restart animation on every click
         card.classList.add("card-zoom");
       });
-      card.addEventListener("animationend", () => card.classList.remove("card-zoom"));
+      card.addEventListener("animationend", () =>
+        card.classList.remove("card-zoom"),
+      );
     });
-
-
 
   /* =========================================================
      MISSION VIEW MORE / VIEW LESS
      ========================================================= */
-  const toggleBtn   = document.querySelector(".btn-view-toggle");
+  const toggleBtn = document.querySelector(".btn-view-toggle");
   const missionFull = document.querySelector(".mission-full");
 
   if (toggleBtn && missionFull) {
@@ -348,7 +476,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleBtn.setAttribute("aria-expanded", String(isOpen));
     });
   }
-
 
   /* =========================================================
      CLIENT LOGOS — duplicate list for seamless scrolling
@@ -368,6 +495,83 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* =========================================================
+     OUR PROJECTS — LIGHTBOX (click a photo to see it big)
+     ========================================================= */
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  const lbCaption = document.getElementById("lbCaption");
+  const projectItems = Array.from(document.querySelectorAll(".project-item"));
+  let lbIndex = 0;
+
+  function showPhoto(index) {
+    lbIndex = (index + projectItems.length) % projectItems.length; // loop around
+    const item = projectItems[lbIndex];
+    lbImg.src = item.getAttribute("href");
+    lbImg.alt = item.dataset.caption || "";
+    lbCaption.textContent = item.dataset.caption || "";
+  }
+
+  function openLightbox(index) {
+    showPhoto(index);
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+  }
+
+  if (lightbox && projectItems.length) {
+    projectItems.forEach((item, i) => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault(); // stay on the page, don't open the image file
+        openLightbox(i);
+      });
+    });
+
+    lightbox
+      .querySelector(".lb-close")
+      .addEventListener("click", closeLightbox);
+    lightbox
+      .querySelector(".lb-prev")
+      .addEventListener("click", () => showPhoto(lbIndex - 1));
+    lightbox
+      .querySelector(".lb-next")
+      .addEventListener("click", () => showPhoto(lbIndex + 1));
+
+    // click on the dark background closes it
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    // keyboard: Esc closes, arrows change photo
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showPhoto(lbIndex + 1);
+      if (e.key === "ArrowLeft") showPhoto(lbIndex - 1);
+    });
+
+    // swipe on phones
+    let lbTouchX = null;
+    lightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        lbTouchX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
+    lightbox.addEventListener("touchend", (e) => {
+      if (lbTouchX === null) return;
+      const diff = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(diff) > 50) showPhoto(diff < 0 ? lbIndex + 1 : lbIndex - 1);
+      lbTouchX = null;
+    });
+  }
 
   /* =========================================================
      CAREERS — APPLY MODAL
@@ -387,20 +591,27 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   document.querySelectorAll(".apply-btn").forEach((button) => {
-    button.addEventListener("click", () => openApply(button.dataset.role || "Position"));
+    button.addEventListener("click", () =>
+      openApply(button.dataset.role || "Position"),
+    );
   });
 
-  applyModal?.querySelectorAll("[data-close]").forEach((el) => el.addEventListener("click", closeApply));
+  applyModal
+    ?.querySelectorAll("[data-close]")
+    .forEach((el) => el.addEventListener("click", closeApply));
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && applyModal?.classList.contains("open")) closeApply();
+    if (e.key === "Escape" && applyModal?.classList.contains("open"))
+      closeApply();
   });
 
   if (careersForm) {
     careersForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const applyMsg = document.getElementById("applyMsg");
-      if (applyMsg) applyMsg.textContent = "✓ Application submitted successfully. Our team will review your CV shortly.";
+      if (applyMsg)
+        applyMsg.textContent =
+          "✓ Application submitted successfully. Our team will review your CV shortly.";
       careersForm.reset();
       setTimeout(() => {
         closeApply();
@@ -408,7 +619,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     });
   }
-
 
   /* =========================================================
      CONTACT FORM
@@ -430,5 +640,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 2000);
     });
   }
-
 });

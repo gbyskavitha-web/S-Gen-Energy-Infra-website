@@ -1,736 +1,2599 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S-Gen Energy &amp; Infra Pvt Ltd | Electrical Panels, EPC &amp; Solar Solutions</title>
-  <meta name="description" content="S-Gen Energy & Infra Pvt Ltd, Chennai – Design, manufacture, installation and maintenance of electrical panels, electrical contracting, Solar EPC, testing & commissioning and electrical safety audits.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      S-Gen Energy &amp; Infra Pvt Ltd | Electrical Panels, EPC &amp; Solar
+      Solutions
+    </title>
+    <meta
+      name="description"
+      content="S-Gen Energy & Infra Pvt Ltd, Chennai – Design, manufacture, installation and maintenance of electrical panels, electrical contracting, Solar EPC, testing & commissioning and electrical safety audits."
+    />
 
-  <!-- Fonts: Barlow (industrial headings) + Inter (clean body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Barlow (industrial headings) + Inter (clean body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="sgen.css">
-  <link rel="icon" href="assets/favicon.ico" sizes="32x32">
-</head>
+    <link rel="stylesheet" href="sgen.css?v=6" />
+    <link rel="icon" href="assets/favicon.ico" sizes="32x32" />
+    <style>
+      .about-grid {
+        align-items: start;
+      }
+      .about-media {
+        margin: 0;
+        padding: 0;
+      }
+      .about-media::before {
+        display: none;
+      }
+      .about-photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: fill;
+        border-radius: 14px;
+        box-shadow: 0 12px 30px rgba(10, 31, 61, 0.18);
+      }
+      .about-badge {
+        top: 18px;
+        right: 18px;
+        bottom: auto;
+      }
+      @media (max-width: 768px) {
+        .about-badge {
+          top: 12px;
+          right: 12px;
+          bottom: auto;
+        }
+      }
+      /* OUR PROJECTS — video size + filter buttons (kept here so it always works) */
+      .projects-video { max-width: 720px; margin: 0 auto 36px; }
+      .projects-video video {
+        display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+        border-radius: 16px; background: #000;
+        box-shadow: 0 18px 40px rgba(10, 31, 61, 0.25);
+      }
+      .project-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+      .pf-btn {
+        font: inherit; font-weight: 600; font-size: 0.92rem; cursor: pointer;
+        padding: 9px 20px; border-radius: 30px; border: 1.5px solid #e3e9f1;
+        background: #fff; color: #0a1f3d; transition: all 0.25s;
+      }
+      .pf-btn:hover { border-color: #03831c; color: #03831c; }
+      .pf-btn.active { background: #03831c; border-color: #03831c; color: #fff; }
+      .project-grid.filtered .project-item:first-child { grid-column: auto; grid-row: auto; aspect-ratio: 4 / 3; }
+      .project-grid.filtered .project-item:first-child strong { font-size: inherit; }
+      @media (max-width: 768px) { .projects-video { margin-bottom: 24px; } .pf-btn { padding: 7px 14px; font-size: 0.85rem; } }
+      /* QUALITY — certificate cards (kept here so it always works) */
+      .certs { margin-top: 56px; text-align: center; }
+      .certs-title { color: #fff; font-size: 1.5rem; margin-bottom: 26px; }
+      .certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+      .cert-card { display: block; background: #fff; border-radius: 14px; padding: 14px 14px 18px;
+        text-decoration: none; box-shadow: 0 12px 28px rgba(0,0,0,0.18); transition: transform 0.3s; }
+      .cert-card:hover { transform: translateY(-6px); }
+      .cert-img { height: 220px; overflow: hidden; margin-bottom: 12px; background: #f4f6f9; border-radius: 8px; }
+      .cert-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+      .cert-card h4 { font-size: 1.05rem; margin-bottom: 4px; color: #0a1f3d; }
+      .cert-card span { font-size: 0.85rem; color: #5b6b80; }
+      .certs-hint { color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 16px; }
+      .policy-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+      @media (max-width: 900px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 420px) { .cert-img { height: 170px; } }
+      /* CLIENTS — logo boxes */
+      .clients-track { animation-duration: 60s; }
+      .client-item { width: 180px; height: 96px; padding: 14px 20px; }
+      .client-item img { max-height: 62px; max-width: 100%; filter: none; opacity: 1; } /* logos always in original colour */
+    </style>
+  </head>
 
-<body>
-
-<!-- ================= TOP BAR ================= -->
-<div class="topbar">
-  <div class="container topbar-inner">
-    <div class="topbar-left">
-      <a href="tel:+917373884554">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
-        +91 73738 84554
-      </a>
-      <a href="mailto:info@sgen.in">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-        info@sgen.in
-      </a>
+  <body>
+    <!-- ================= TOP BAR ================= -->
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="topbar-left">
+          <a href="tel:+917373884554">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+              />
+            </svg>
+            +91 73738 84554
+          </a>
+          <a href="mailto:info@sgen.in">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 6-10 7L2 6" />
+            </svg>
+            info@sgen.in
+          </a>
+        </div>
+        <div class="topbar-right">
+          <span class="badge-mini">“A” Grade Licence No: EA 3293</span>
+          <span class="topbar-sep">|</span>
+          <span>Mon – Sat : 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
     </div>
-    <div class="topbar-right">
-      <span class="badge-mini">“A” Grade Licence No: EA 3293</span>
-      <span class="topbar-sep">|</span>
-      <span>Mon – Sat : 9:00 AM – 6:00 PM</span>
-    </div>
-  </div>
-</div>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header" id="siteHeader">
-  <div class="container header-inner">
-    <a href="#home" class="brand" aria-label="S-Gen Energy & Infra – Home">
-      <img src="images/sgenlogo (2).png" alt="S-Gen Energy & Infra Logo" class="site-logo">
+    <!-- ================= HEADER ================= -->
+    <header class="site-header" id="siteHeader">
+      <div class="container header-inner">
+        <a href="#home" class="brand" aria-label="S-Gen Energy & Infra – Home">
+          <img
+            src="images/sgenlogo (2).png"
+            alt="S-Gen Energy & Infra Logo"
+            class="site-logo"
+          />
+        </a>
+
+        <nav id="mainNav" class="nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <div class="nav-dropdown">
+            <a href="#services" class="nav-drop-link"
+              >Services
+              <svg class="drop-caret" viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <button
+              type="button"
+              class="drop-btn"
+              aria-label="Show services list"
+              aria-expanded="false"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="service.html?s=ev">EV Charging Infrastructure</a>
+              <a href="service.html?s=consultancy">Electrical Consultancy</a>
+              <a href="service.html?s=approvals"
+                >Electrical Statutory Approvals</a
+              >
+              <a href="service.html?s=panels"
+                >Panel Manufacturing &amp; Automation</a
+              >
+              <a href="service.html?s=contractor">Electrical Contractor</a>
+              <a href="service.html?s=testing"
+                >HT / LT Testing &amp; Services</a
+              >
+              <a href="service.html?s=power-study">Power System Study</a>
+              <a href="service.html?s=safety">Safety &amp; Security System</a>
+              <a href="service.html?s=maintenance">Electrical Maintenance</a>
+              <a href="service.html?s=solar">Solar EPC &amp; Energy Storage</a>
+              <a href="#projects" class="dropdown-projects">Our Projects</a>
+            </div>
+          </div>
+          <a href="#products">Products</a>
+          <a href="#quality-policy">Quality Policy</a>
+          <a href="#careers">Careers</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-cta-mobile">Get a Quote</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#contact" class="btn btn-primary header-cta">Get a Quote</a>
+          <button
+            id="menuBtn"
+            class="menu-btn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mainNav"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= HERO (full-width slideshow) ================= -->
+    <section id="home" class="hero-viewport" aria-label="Main hero">
+      <div class="hero-slides" id="heroSlides" aria-live="polite">
+        <!-- Slide 1: EV charging photo (charging station left, MTC electric buses right) -->
+        <div
+          class="hero-slide hero-slide-ev"
+          style="
+            background-image: url(&quot;EV Charging staion busdepo.jpeg&quot;), url(&quot;images/EV Charging staion busdepo.jpeg&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content container">
+            <span class="hero-eyebrow"
+              >Govt. EV Infrastructure · MTC Chennai</span
+            >
+            <h1>EV Charging Stations<br />for Electric Buses</h1>
+            <p class="lead">
+              240 kW charging stations, HT/LT panels and complete electrical
+              works for MTC electric bus depots in Chennai.
+            </p>
+            <div class="hero-ctas">
+              <a href="#projects" class="btn btn-primary btn-lg"
+                >View Projects</a
+              >
+              <a href="#contact" class="btn btn-ghost btn-lg">Get a Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;Indoor-Modern-Design-Factory-Industrial-New-Energy-Resources-LED-Panel-Light-Cleanroom.avif&quot;), url(&quot;images/Indoor-Modern-Design-Factory-Industrial-New-Energy-Resources-LED-Panel-Light-Cleanroom.avif&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content container">
+            <span class="hero-eyebrow">Since 2012 · Chennai, Tamil Nadu</span>
+            <h1>Design &amp; Manufacture<br />of Electrical Panels</h1>
+            <p class="lead">
+              Rooftop solar, industrial power systems and turnkey EPC –
+              engineered for safety, built for reliability.
+            </p>
+            <div class="hero-ctas">
+              <a href="#contact" class="btn btn-primary btn-lg">Get a Quote</a>
+              <a href="#products" class="btn btn-ghost btn-lg">Our Products</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;ht testing service image.webp&quot;), url(&quot;images/ht testing service image.webp&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content container">
+            <span class="hero-eyebrow">Turnkey Electrical Projects</span>
+            <h1>Industrial &amp; Commercial<br />Power &amp; Automation</h1>
+            <p class="lead">
+              Complete solutions – design, supply, erection, testing and
+              commissioning.
+            </p>
+            <div class="hero-ctas">
+              <a href="#contact" class="btn btn-primary btn-lg"
+                >Talk to Sales</a
+              >
+              <a href="#services" class="btn btn-ghost btn-lg">Our Services</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;LED-Lighting-Solution-for-Healthcare-Industries.webp&quot;), url(&quot;images/LED-Lighting-Solution-for-Healthcare-Industries.webp&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content container">
+            <span class="hero-eyebrow">Energy Efficient Solutions</span>
+            <h1>Lighting &amp; Safety<br />Systems for All Sectors</h1>
+            <p class="lead">
+              LED lighting, safety and security installations – efficient,
+              compliant and reliable.
+            </p>
+            <div class="hero-ctas">
+              <a href="#products" class="btn btn-primary btn-lg"
+                >View Products</a
+              >
+              <a href="#contact" class="btn btn-ghost btn-lg">Contact Us</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;lt-panel-installation-service.jpg&quot;), url(&quot;images/lt-panel-installation-service.jpg&quot;);
+          "
+        >
+          <div class="hero-overlay"></div>
+          <div class="hero-content container">
+            <span class="hero-eyebrow">Inspection &amp; Certification</span>
+            <h1>Electrical<br />Safety Audit</h1>
+            <p class="lead">
+              Thorough inspection and safety certification for your power
+              systems.
+            </p>
+            <div class="hero-ctas">
+              <a href="#services" class="btn btn-primary btn-lg"
+                >Explore Services</a
+              >
+              <a href="#contact" class="btn btn-ghost btn-lg">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="heroPagination" class="hero-pagination"></div>
+      <div class="hero-progress"><span id="heroProgress"></span></div>
+    </section>
+
+    <!-- ================= TRUST STRIP ================= -->
+    <section class="trust-strip" aria-label="Company highlights">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <strong>2012</strong>
+          <span>Established in Chennai</span>
+        </div>
+        <div class="trust-item">
+          <strong>“A” Grade</strong>
+          <span>Electrical Licence EA 3293</span>
+        </div>
+        <div class="trust-item">
+          <strong>End-to-End</strong>
+          <span>Design · Manufacture · Install · Maintain</span>
+        </div>
+        <div class="trust-item">
+          <strong>Pan-India</strong>
+          <span>Clientele across the nation</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT US ================= -->
+    <section id="about" class="section about">
+      <!-- Section heading (same style as other sections) -->
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Who We Are</span>
+          <h2 class="section-title">About Us</h2>
+          <p class="section-sub">
+            Design &middot; Manufacture &middot; Install &middot; Maintain –
+            since 2012.
+          </p>
+        </div>
+      </div>
+
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <img
+            src="images/sgenstaffphoto.jpg"
+            alt="S-Gen Energy & Infra team"
+            class="about-photo"
+          />
+          <div class="about-badge">
+            <strong>Since 2012</strong>
+            <span>Powering industry with quality &amp; safety</span>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <h3 class="about-company">S-Gen Energy &amp; Infra Pvt Ltd</h3>
+          <p>
+            Established in 2012 with our operational headquarters in Chennai,
+            Tamil Nadu, S-Gen Energy and Infra Pvt Ltd is a leading
+            manufacturer, trader and supplier of a wide range of high-quality
+            electrical products – Control Panels, Electrical Panel Boards, Solar
+            solutions and much more.
+          </p>
+          <p>
+            As a quality-conscious organisation, every product passes through
+            multiple quality checks performed by our team of quality analysts
+            using ultra-modern equipment and technologies. Our products are
+            known in the market for smooth finish, reliability, corrosion
+            resistance and premium quality – at budget-friendly rates.
+          </p>
+          <p>
+            We are also a trusted service provider for Electrical Contracting,
+            Electrical Wiring and allied services, delivered by specialists
+            using the latest procedures. Superior products and services have
+            helped us build a strong clientele base across the nation.
+          </p>
+
+          <ul class="check-list">
+            <li>Panels built to safety standards</li>
+            <li>In-house quality analysts</li>
+            <li>Turnkey electrical contracting</li>
+            <li>Competitive, transparent pricing</li>
+          </ul>
+
+          <div class="about-ctas">
+            <a href="#services" class="btn btn-primary">Our Services</a>
+            <a href="#contact" class="btn btn-outline-dark">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision / Mission / Values -->
+      <div class="container vmv-grid">
+        <article class="vmv-card reveal">
+          <div class="vmv-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+          <h3>Our Vision</h3>
+          <p>
+            To establish S-GEN as the leading and most preferred electrical
+            engineering company, focusing on electrical project execution
+            through innovative, cost-effective engineering solutions and
+            services of international standards.
+          </p>
+        </article>
+
+        <article class="vmv-card mission-card reveal">
+          <div class="vmv-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+          </div>
+          <h3>Our Mission</h3>
+          <p class="mission-preview">
+            To provide our customers the highest level of quality services at
+            fair and market-competitive prices, while building successful
+            relationships with our customers and suppliers.
+          </p>
+
+          <ul class="mission-full" id="missionFull">
+            <li>
+              Maintain the highest level of professionalism, integrity, honesty,
+              fairness and transparency with our suppliers, sub-contractors,
+              associates and employees.
+            </li>
+            <li>
+              Provide quality Electrical Contracting, technical and management
+              services to our customers.
+            </li>
+            <li>
+              Ensure longevity through repeat and referral business built on
+              safety, quality, timely service and anticipating needs.
+            </li>
+            <li>
+              Deliver high-quality, cost-effective projects on schedule with
+              motivated, flexible and focused teams.
+            </li>
+            <li>
+              Stay ahead by innovating new ideas and services based on customer
+              needs and market demand.
+            </li>
+            <li>
+              Promote a culture that fosters individual growth, team spirit and
+              creativity.
+            </li>
+          </ul>
+
+          <button
+            class="btn-link btn-view-toggle"
+            aria-expanded="false"
+            aria-controls="missionFull"
+          >
+            View More <span aria-hidden="true">→</span>
+          </button>
+        </article>
+
+        <article class="vmv-card reveal">
+          <div class="vmv-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          </div>
+          <h3>Core Values</h3>
+          <ul class="values-list">
+            <li>
+              <span class="value-icon"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" />
+                  <path d="m9 12 2 2 4-4" /></svg
+              ></span>
+              <span
+                ><strong>Safety &amp; Compliance</strong> – zero compromise on
+                site and product safety.</span
+              >
+            </li>
+            <li>
+              <span class="value-icon"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.5 13 17 22l-5-3-5 3 1.5-9" /></svg
+              ></span>
+              <span
+                ><strong>Quality &amp; Reliability</strong> – rigorous checks on
+                every panel we build.</span
+              >
+            </li>
+            <li>
+              <span class="value-icon"
+                ><svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path
+                    d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"
+                  /></svg
+              ></span>
+              <span
+                ><strong>Customer Focus</strong> – long-term partnerships,
+                timely delivery.</span
+              >
+            </li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Leadership -->
+      <div class="container">
+        <div class="leaders">
+          <div class="leaders-head reveal">
+            <span class="eyebrow">Leadership</span>
+            <h3>Our Leadership</h3>
+          </div>
+          <div class="leader-grid">
+            <article class="leader-card reveal">
+              <div class="leader-photo">
+                <img
+                  src="images/senthilraj.jpeg"
+                  alt="Dr. S. Senthil Raj, Managing Director"
+                  loading="lazy"
+                />
+              </div>
+              <div class="leader-body">
+                <span class="leader-role">Managing Director</span>
+                <h4>Dr. S. Senthil Raj</h4>
+                <p class="leader-qual">M.E., Ph.D., MIE., C.Eng.</p>
+              </div>
+            </article>
+            <article class="leader-card reveal">
+              <div class="leader-photo">
+                <img
+                  src="images/suresh.jpeg"
+                  alt="Mr. P. Suresh, Director"
+                  loading="lazy"
+                />
+              </div>
+              <div class="leader-body">
+                <span class="leader-role">Director</span>
+                <h4>Mr. P. Suresh</h4>
+                <p class="leader-qual">B.E.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Info -->
+      <div class="container">
+        <div class="company-info reveal">
+          <div class="company-info-head">
+            <span class="eyebrow eyebrow-light">Corporate Profile</span>
+            <h3>Company Information</h3>
+          </div>
+          <dl class="info-grid">
+            <div>
+              <dt>Name of Company</dt>
+              <dd>S-Gen Energy and Infra Pvt Ltd</dd>
+            </div>
+            <div>
+              <dt>Registered Address</dt>
+              <dd>
+                Plot No 54, Ramachandra Nagar, Iyyappanthangal, Chennai – 600056
+              </dd>
+            </div>
+            <div>
+              <dt>Contact Numbers</dt>
+              <dd>044-4260 4554 / +91 73738 84554</dd>
+            </div>
+            <div>
+              <dt>E-mail</dt>
+              <dd><a href="mailto:info@sgen.in">info@sgen.in</a></dd>
+            </div>
+            <div>
+              <dt>Website</dt>
+              <dd>www.sgen.in</dd>
+            </div>
+            <div>
+              <dt>Managing Director</dt>
+              <dd>Dr. S. Senthil Raj, M.E., Ph.D., MIE., C.Eng.</dd>
+            </div>
+            <div>
+              <dt>Director</dt>
+              <dd>Mr. P. Suresh, B.E.</dd>
+            </div>
+            <div>
+              <dt>GST No</dt>
+              <dd>33AAYCS8138A1Z4</dd>
+            </div>
+            <div>
+              <dt>PAN No</dt>
+              <dd>AAYCS8138A</dd>
+            </div>
+            <div>
+              <dt>“A” Grade Licence No</dt>
+              <dd>EA 3293</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="section services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What We Do</span>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-sub">
+            Complete electrical solutions – from consultancy and approvals to
+            installation, testing and maintenance.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <!-- NEW: EV charging (same size as other cards) -->
+          <article class="service-card reveal" id="svc-ev">
+            <span class="service-num">01</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="11" height="18" rx="2" />
+                <path d="M7 21v-4M14 9h2a2 2 0 0 1 2 2v5a2 2 0 0 0 4 0V8l-3-3" />
+                <path d="m9 7-2 4h3l-2 4" />
+              </svg>
+            </div>
+            <h3>EV Charging Infrastructure</h3>
+            <p>
+              EV charging stations with 240 kW chargers, HT/LT panels and
+              complete electrical works for MTC bus depots.
+            </p>
+            <a href="service.html?s=ev" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+          <article class="service-card reveal" id="svc-consultancy">
+            <span class="service-num">02</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <path d="M14 2v6h6M8 13h8M8 17h5" />
+              </svg>
+            </div>
+            <h3>Electrical Consultancy</h3>
+            <p>
+              Detailed planning, cost estimates, tender support and feasibility
+              studies for HT &amp; LT installations and turnkey projects.
+            </p>
+            <a href="service.html?s=consultancy" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-approvals">
+            <span class="service-num">03</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                />
+                <path d="M14 2v6h6M9 15l2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Electrical Statutory Approvals</h3>
+            <p>
+              End-to-end support for electrical approvals and liaisoning with
+              statutory authorities.
+            </p>
+            <a href="service.html?s=approvals" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-panels">
+            <span class="service-num">04</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2" />
+                <path d="M8 6h8M8 10h8" />
+                <circle cx="9" cy="16" r="1.5" />
+                <circle cx="15" cy="16" r="1.5" />
+              </svg>
+            </div>
+            <h3>Panel Manufacturing &amp; Automation</h3>
+            <p>
+              LT, PCC, MCC, APFC and control panels, plus industrial automation
+              systems built to your specifications.
+            </p>
+            <a href="service.html?s=panels" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-contractor">
+            <span class="service-num">05</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13 2 3 14h9l-1 8 10-12h-9z" />
+              </svg>
+            </div>
+            <h3>Electrical Contractor</h3>
+            <p>
+              HT/LT works – bus ducts, rising mains, cable trays, cable laying
+              &amp; termination, indoor/outdoor lighting and earthing.
+            </p>
+            <a href="service.html?s=contractor" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-testing">
+            <span class="service-num">06</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12h4l3-8 4 16 3-8h4" />
+              </svg>
+            </div>
+            <h3>HT / LT Testing &amp; Services</h3>
+            <p>
+              Testing, relay calibration and commissioning of HT and LT systems
+              by certified engineers.
+            </p>
+            <a href="service.html?s=testing" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-power-study">
+            <span class="service-num">07</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 3v18h18" />
+                <path d="m7 15 4-4 3 3 5-6" />
+              </svg>
+            </div>
+            <h3>Power System Study</h3>
+            <p>
+              Load flow, power quality and protection studies to keep your
+              electrical system safe and efficient.
+            </p>
+            <a href="service.html?s=power-study" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-safety">
+            <span class="service-num">08</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z" />
+                <path d="m9 12 2 2 4-4" />
+              </svg>
+            </div>
+            <h3>Safety &amp; Security System</h3>
+            <p>
+              Electrical safety audits, safety and security system installations
+              for all sectors.
+            </p>
+            <a href="service.html?s=safety" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-maintenance">
+            <span class="service-num">09</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"
+                />
+              </svg>
+            </div>
+            <h3>Electrical Maintenance (AMC)</h3>
+            <p>
+              Annual maintenance for all HT/LT electrical equipment, along with
+              skilled manpower services.
+            </p>
+            <a href="service.html?s=maintenance" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+
+          <article class="service-card reveal" id="svc-solar">
+            <span class="service-num">10</span>
+            <div class="service-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path
+                  d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+                />
+              </svg>
+            </div>
+            <h3>Solar EPC &amp; Energy Storage</h3>
+            <p>
+              Rooftop and ground-mounted solar EPC with battery and hybrid
+              backup systems.
+            </p>
+            <a href="service.html?s=solar" class="btn-link svc-more"
+              >Read More <span aria-hidden="true">→</span></a
+            >
+          </article>
+        </div>
+
+        <!-- AMC call-to-action strip -->
+        <div class="amc-strip reveal">
+          <div>
+            <h3>Looking for reliable maintenance?</h3>
+            <p>
+              Join our Annual Maintenance Contract (AMC) for HT/LT equipment –
+              planned upkeep, fewer breakdowns.
+            </p>
+          </div>
+          <div class="amc-actions">
+            <a href="#projects" class="btn btn-ghost">View Our Projects</a>
+            <a href="#contact" class="btn btn-primary">Join for AMC</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRODUCTS ================= -->
+    <section id="products" class="section products">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Range</span>
+          <h2 class="section-title">Our Products</h2>
+          <p class="section-sub">
+            Electrical panels and infrastructure solutions we design, build and
+            deliver.
+          </p>
+        </div>
+
+        <div class="products-grid products-grid--10">
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/pcc.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="PCC Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Power Control</span>
+              <h3>PCC Panels</h3>
+              <p>Main power distribution panels for plants, buildings and industries.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/mcc.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="MCC Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Motor Control</span>
+              <h3>MCC Panels</h3>
+              <p>Motor Control Centres to start, protect and control motors safely.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/distribution.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="Distribution Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Distribution</span>
+              <h3>Distribution Panels</h3>
+              <p>Feeder and distribution boards for safe, reliable power distribution.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/amf.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="AMF Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Auto Changeover</span>
+              <h3>AMF Panels</h3>
+              <p>Auto Mains Failure panels that switch to the DG automatically during power cuts.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/synchronising.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="Synchronising Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">DG Sync</span>
+              <h3>Synchronising Panels</h3>
+              <p>Run multiple DG sets together in sync, sharing the load smoothly.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/dg.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="DG Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Generator</span>
+              <h3>DG Panels</h3>
+              <p>Control and protection panels for diesel generator sets.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/bus-duct.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="Bus Ducts" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Power Transfer</span>
+              <h3>Bus Ducts</h3>
+              <p>Bus ducts and rising mains for high-current power transfer.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/lt-metering.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="LT Metering Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Metering</span>
+              <h3>LT Metering Panels</h3>
+              <p>Metering panels for accurate energy measurement and billing.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/capacitor.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="Capacitor Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Power Factor</span>
+              <h3>Capacitor Panels</h3>
+              <p>Capacitor and APFC panels to improve power factor and cut energy bills.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="images/products/drive.jpg" onerror="this.onerror=null;this.src=this.src.replace('/products/','/')" alt="Drive Panels" loading="lazy" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">VFD / AC Drive</span>
+              <h3>Drive Panels</h3>
+              <p>VFD panels for energy-efficient motor speed control and soft start.</p>
+              <a href="#contact" class="btn-link"
+                >Enquire Now <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+        </div>
+
+        <p class="products-note reveal">
+          All panels are custom-built to your requirement and tested by our
+          in-house quality team.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= OUR PROJECTS ================= -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Work</span>
+          <h2 class="section-title">Our Projects</h2>
+          <p class="section-sub">
+            A look at some of the electrical and EV infrastructure projects we
+            have delivered.
+          </p>
+        </div>
+
+        <!-- Project video (full 4 minutes, no sound) -->
+        <div class="projects-video reveal">
+          <video
+            src="images/sgen-projects-full.mp4"
+            poster="images/sgen-projects-1min-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+            preload="metadata"
+          ></video>
+        </div>
+
+        <!-- Filter buttons -->
+        <div class="project-filters reveal" aria-label="Filter projects">
+          <button type="button" class="pf-btn active" data-filter="all">All Projects</button>
+          <button type="button" class="pf-btn" data-filter="ev">EV Charging</button>
+          <button type="button" class="pf-btn" data-filter="industrial">Industrial</button>
+          <button type="button" class="pf-btn" data-filter="commercial">Commercial</button>
+        </div>
+
+        <div class="project-grid" id="projectGrid">
+          <a
+            href="images/projects/project-01.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="MTC Electric Bus Depot, Chennai"
+          >
+            <img
+              src="images/projects/project-01.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="MTC Electric Bus Depot, Chennai"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>MTC Electric Bus Depot, Chennai</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-02.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="240 kW Bus Charging Stations"
+          >
+            <img
+              src="images/projects/project-02.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="240 kW Bus Charging Stations"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>240 kW Bus Charging Stations</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-20.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="OHM Electric Bus Depot, Chennai"
+          >
+            <img
+              src="images/projects/project-20.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="OHM Electric Bus Depot, Chennai"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>OHM Electric Bus Depot, Chennai</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-14.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="Panel Commissioning – Chansung Component India, Oragadam"
+          >
+            <img
+              src="images/projects/project-14.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Panel Commissioning – Chansung Component India, Oragadam"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>Panel Commissioning – Chansung Component India, Oragadam</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-03.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="EV Fast Charging Station"
+          >
+            <img
+              src="images/projects/project-03.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="EV Fast Charging Station"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>EV Fast Charging Station</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-16.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="Outdoor HT Panels with Safety Fencing"
+          >
+            <img
+              src="images/projects/project-16.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Outdoor HT Panels with Safety Fencing"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>Outdoor HT Panels with Safety Fencing</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-19.jpg"
+            class="project-item reveal"
+            data-cat="commercial"
+            data-caption="Office Electrification – Vilwatech Enabler"
+          >
+            <img
+              src="images/projects/project-19.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Office Electrification – Vilwatech Enabler"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Commercial</span
+              ><strong>Office Electrification – Vilwatech Enabler</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-21.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="240 kW Ultra-Fast Chargers, Chennai"
+          >
+            <img
+              src="images/projects/project-21.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="240 kW Ultra-Fast Chargers, Chennai"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>240 kW Ultra-Fast Chargers, Chennai</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-15.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="LT Power Panels – Chansung Component India"
+          >
+            <img
+              src="images/projects/project-15.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="LT Power Panels – Chansung Component India"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>LT Power Panels – Chansung Component India</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-17.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="Transformer Installation"
+          >
+            <img
+              src="images/projects/project-17.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Transformer Installation"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>Transformer Installation</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-04.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="Highway EV Charging Hub"
+          >
+            <img
+              src="images/projects/project-04.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Highway EV Charging Hub"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>Highway EV Charging Hub</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-06.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="HT Yard &amp; Transformer Installation"
+          >
+            <img
+              src="images/projects/project-06.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="HT Yard &amp; Transformer Installation"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>HT Yard &amp; Transformer Installation</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-18.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="Outdoor PCC Panel"
+          >
+            <img
+              src="images/projects/project-18.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Outdoor PCC Panel"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>Outdoor PCC Panel</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-05.jpg"
+            class="project-item reveal"
+            data-cat="ev"
+            data-caption="DC Fast Charger Installation"
+          >
+            <img
+              src="images/projects/project-05.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="DC Fast Charger Installation"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">EV Infrastructure</span
+              ><strong>DC Fast Charger Installation</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-07.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="HT Cable Termination &amp; CT Panel"
+          >
+            <img
+              src="images/projects/project-07.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="HT Cable Termination &amp; CT Panel"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>HT Cable Termination &amp; CT Panel</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-08.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="Main LT Panel Installation"
+          >
+            <img
+              src="images/projects/project-08.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Main LT Panel Installation"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>Main LT Panel Installation</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-09.jpg"
+            class="project-item reveal"
+            data-cat="commercial"
+            data-caption="Distribution Panel Room"
+          >
+            <img
+              src="images/projects/project-09.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Distribution Panel Room"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Commercial</span
+              ><strong>Distribution Panel Room</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-10.jpg"
+            class="project-item reveal"
+            data-cat="industrial"
+            data-caption="PCC Panel with Cable Tray Works"
+          >
+            <img
+              src="images/projects/project-10.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="PCC Panel with Cable Tray Works"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Industrial</span
+              ><strong>PCC Panel with Cable Tray Works</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-11.jpg"
+            class="project-item reveal"
+            data-cat="commercial"
+            data-caption="UPS Input &amp; Output Panels"
+          >
+            <img
+              src="images/projects/project-11.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="UPS Input &amp; Output Panels"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Commercial</span
+              ><strong>UPS Input &amp; Output Panels</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-12.jpg"
+            class="project-item reveal"
+            data-cat="commercial"
+            data-caption="Office Electrical &amp; Lighting Works"
+          >
+            <img
+              src="images/projects/project-12.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Office Electrical &amp; Lighting Works"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Commercial</span
+              ><strong>Office Electrical &amp; Lighting Works</strong></span
+            >
+          </a>
+          <a
+            href="images/projects/project-13.jpg"
+            class="project-item reveal"
+            data-cat="commercial"
+            data-caption="Sub-Distribution Panels"
+          >
+            <img
+              src="images/projects/project-13.jpg"
+              onerror="this.onerror=null;this.src=this.src.replace('/projects/','/')"
+              alt="Sub-Distribution Panels"
+              loading="lazy"
+            />
+            <span class="project-info"
+              ><span class="project-tag">Commercial</span
+              ><strong>Sub-Distribution Panels</strong></span
+            >
+          </a>
+        </div>
+
+        <script>
+          /* Project filter buttons: show only the chosen type of project */
+          (function () {
+            var grid = document.getElementById("projectGrid");
+            var btns = document.querySelectorAll(".pf-btn");
+            btns.forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var f = btn.getAttribute("data-filter");
+                btns.forEach(function (b) { b.classList.remove("active"); });
+                btn.classList.add("active");
+                grid.classList.toggle("filtered", f !== "all");
+                grid.querySelectorAll(".project-item").forEach(function (item) {
+                  item.style.display = f === "all" || item.dataset.cat === f ? "" : "none";
+                });
+              });
+            });
+          })();
+        </script>
+      </div>
+    </section>
+
+    <!-- ================= QUALITY POLICY ================= -->
+    <section id="quality-policy" class="section quality">
+      <div class="container">
+        <div class="section-head section-head-light reveal">
+          <span class="eyebrow eyebrow-light">Our Commitment</span>
+          <h2 class="section-title">Quality Policy</h2>
+          <p class="section-sub">
+            Our commitment to quality, safety and continual improvement.
+          </p>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-card reveal">
+            <span class="policy-num">01</span>
+            <h3>Our Commitment</h3>
+            <p>
+              S-Gen Energy &amp; Infra is committed to delivering products and
+              services that conform to statutory, regulatory and client
+              requirements through robust processes and a culture of continual
+              improvement.
+            </p>
+          </article>
+
+          <article class="policy-card reveal">
+            <span class="policy-num">02</span>
+            <h3>Key Principles</h3>
+            <ul>
+              <li>Meet or exceed customer requirements and expectations.</li>
+              <li>
+                Maintain strict safety and environmental standards on every
+                project.
+              </li>
+              <li>
+                Adopt best-practice quality controls in design, manufacture and
+                commissioning.
+              </li>
+            </ul>
+          </article>
+
+          <article class="policy-card reveal">
+            <span class="policy-num">03</span>
+            <h3>What We Measure</h3>
+            <ul>
+              <li>On-time delivery and project milestones.</li>
+              <li>Product conformity and first-time pass rates.</li>
+              <li>Customer satisfaction and corrective actions closed.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Certifications -->
+        <div class="certs reveal">
+          <h3 class="certs-title">Our Certifications</h3>
+          <div class="certs-grid">
+          <a class="cert-card" href="images/certificates/cpri-iec-61439.jpg" target="_blank" rel="noopener">
+            <div class="cert-img"><img src="images/certificates/cpri-iec-61439.jpg" onerror="this.onerror=null;this.src=this.src.replace('/certificates/','/')" alt="CPRI Tested certificate" loading="lazy" /></div>
+            <h4>CPRI Tested</h4>
+            <span>IEC 61439 Partial Type Test (PTTA)</span>
+          </a>
+          <a class="cert-card" href="images/certificates/iso-9001.jpg" target="_blank" rel="noopener">
+            <div class="cert-img"><img src="images/certificates/iso-9001.jpg" onerror="this.onerror=null;this.src=this.src.replace('/certificates/','/')" alt="ISO 9001:2015 certificate" loading="lazy" /></div>
+            <h4>ISO 9001:2015</h4>
+            <span>Quality Management System</span>
+          </a>
+          <a class="cert-card" href="images/certificates/iso-14001.jpg" target="_blank" rel="noopener">
+            <div class="cert-img"><img src="images/certificates/iso-14001.jpg" onerror="this.onerror=null;this.src=this.src.replace('/certificates/','/')" alt="ISO 14001:2015 certificate" loading="lazy" /></div>
+            <h4>ISO 14001:2015</h4>
+            <span>Environmental Management System</span>
+          </a>
+          <a class="cert-card" href="images/certificates/iso-45001.jpg" target="_blank" rel="noopener">
+            <div class="cert-img"><img src="images/certificates/iso-45001.jpg" onerror="this.onerror=null;this.src=this.src.replace('/certificates/','/')" alt="ISO 45001:2018 certificate" loading="lazy" /></div>
+            <h4>ISO 45001:2018</h4>
+            <span>Occupational Health &amp; Safety</span>
+          </a>
+          </div>
+          <p class="certs-hint">Click a certificate to view it full size.</p>
+        </div>
+
+        <div class="policy-actions reveal">
+          <!-- Quality Policy PDF button: put the PDF in images, then remove these comment marks
+          <a
+            href="images/SGEN-Quality-policy.pdf" download
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            Download Quality Policy (PDF)
+          </a>
+          -->
+          <a
+            href="images/S-Gen profile.pdf" download
+            class="btn btn-light"
+            target="_blank"
+            rel="noopener"
+          >
+            Download Company Profile (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CAREERS ================= -->
+    <section id="careers" class="section careers">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Join Our Team</span>
+          <h2 class="section-title">Careers</h2>
+          <p class="section-sub">
+            We look for passionate people who care about engineering, safety and
+            service delivery.
+          </p>
+        </div>
+
+        <div class="jobs-grid">
+          <article class="job-card reveal">
+            <div class="job-top">
+              <h3>Electrical Site Engineer</h3>
+              <span class="job-type">Full-time</span>
+            </div>
+            <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 1–5 years</p>
+            <ul>
+              <li>
+                Site supervision for panel installation, testing &amp;
+                commissioning
+              </li>
+              <li>Coordinate with QA/QC and project managers</li>
+              <li>Valid safety &amp; testing certifications preferred</li>
+            </ul>
+            <button
+              class="btn btn-outline-dark apply-btn"
+              data-role="Electrical Site Engineer"
+            >
+              Apply Now
+            </button>
+          </article>
+
+          <article class="job-card reveal">
+            <div class="job-top">
+              <h3>Design Engineer – LT Panels</h3>
+              <span class="job-type">Full-time</span>
+            </div>
+            <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 2–5 years</p>
+            <ul>
+              <li>Panel layout &amp; wiring diagram preparation</li>
+              <li>Bill of materials and vendor coordination</li>
+            </ul>
+            <button
+              class="btn btn-outline-dark apply-btn"
+              data-role="Design Engineer – LT Panels"
+            >
+              Apply Now
+            </button>
+          </article>
+
+          <article class="job-card reveal">
+            <div class="job-top">
+              <h3>Service Technician</h3>
+              <span class="job-type">Full-time</span>
+            </div>
+            <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 1–3 years</p>
+            <ul>
+              <li>
+                O&amp;M support, troubleshooting and preventive maintenance
+              </li>
+              <li>Basic electrical testing, earthing and safety checks</li>
+            </ul>
+            <button
+              class="btn btn-outline-dark apply-btn"
+              data-role="Service Technician"
+            >
+              Apply Now
+            </button>
+          </article>
+        </div>
+      </div>
+
+      <!-- Application modal -->
+      <div class="modal" id="applyFormWrap" aria-hidden="true">
+        <div class="modal-backdrop" data-close></div>
+        <div
+          class="modal-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="applyTitle"
+        >
+          <button
+            type="button"
+            class="modal-close"
+            data-close
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          <form id="careersForm" class="form" enctype="multipart/form-data">
+            <h3 id="applyTitle">
+              Apply for <span id="appliedRole">Position</span>
+            </h3>
+            <div class="form-row">
+              <label
+                >Full Name *<input type="text" name="fullname" required
+              /></label>
+              <label>Email *<input type="email" name="email" required /></label>
+            </div>
+            <div class="form-row">
+              <label>Phone<input type="tel" name="phone" /></label>
+              <label
+                >Current Location<input type="text" name="location"
+              /></label>
+            </div>
+            <label
+              >Cover Note<textarea
+                name="cover"
+                rows="4"
+                placeholder="Short note about your experience"
+              ></textarea>
+            </label>
+            <label
+              >Upload CV (PDF / DOC) *<input
+                type="file"
+                name="cv"
+                accept=".pdf,.doc,.docx"
+                required
+            /></label>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Submit Application
+              </button>
+              <button
+                type="button"
+                id="cancelApply"
+                class="btn btn-outline-dark"
+                data-close
+              >
+                Cancel
+              </button>
+            </div>
+            <p id="applyMsg" class="form-msg" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLIENTS ================= -->
+    <section id="clients" class="section clients">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Our Clients</span>
+          <h2 class="section-title">Trusted by Leading Organisations</h2>
+        </div>
+      </div>
+      <div class="clients-marquee" aria-label="Our clients">
+        <ul class="clients-track" id="clientsList">
+          <li class="client-item"><img src="images/clients/siemens.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Siemens" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/hyundai.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Hyundai" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/murugappa.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Murugappa Group" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/tvs-sundaram.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="TVS Sundaram Motors" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/chargezone.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="ChargeZone" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/statiq.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Statiq" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/delta.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Delta EV Charging Solutions" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/sona-comstar.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Sona Comstar" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/ti-india.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="TI India" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/srf.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="SRF" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/caplin-point.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Caplin Point Laboratories" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/axon.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Axon Drugs" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/eriez.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Eriez" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/krishna-group.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Krishna Group" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/reep.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="REEP" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/ohm.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="OHM" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/sathlokhar.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Sathlokhar Synergys" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/shoeline.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Shoeline" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/krishca.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Krishca Strapping Solutions" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/merit.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Merit" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/everrenew.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Everrenew" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/ntc.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="NTC" loading="lazy" /></li>
+          <li class="client-item"><img src="images/clients/client-leaf.png" onerror="this.onerror=null;this.src=this.src.replace('/clients/','/')" alt="Client" loading="lazy" /></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= CTA BAND ================= -->
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <div>
+          <h2>Planning an electrical or solar project?</h2>
+          <p>
+            Talk to our engineers for a free consultation and a detailed
+            quotation.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a href="#contact" class="btn btn-light btn-lg">Request a Quote</a>
+          <a href="tel:+917373884554" class="btn btn-ghost btn-lg"
+            >Call +91 73738 84554</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Get In Touch</span>
+          <h2 class="section-title">Contact Us</h2>
+          <p class="section-sub">
+            Tell us about your project – we'll get back to you within 2 business
+            days.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h4>Registered Office</h4>
+                <p>
+                  Plot No 54, Ramachandra Nagar,<br />Iyyappanthangal, Chennai –
+                  600056,<br />Tamil Nadu, India
+                </p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4>Phone</h4>
+                <p>
+                  <a href="tel:04442604554">044-4260 4554</a><br /><a
+                    href="tel:+917373884554"
+                    >+91 73738 84554</a
+                  >
+                </p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 6-10 7L2 6" />
+                </svg>
+              </div>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:info@sgen.in">info@sgen.in</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div>
+                <h4>Working Hours</h4>
+                <p>Monday – Saturday : 9:00 AM – 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <form
+            id="contactForm"
+            class="form contact-form reveal"
+            action="https://formspree.io/f/your-form-id"
+            method="POST"
+          >
+            <h3>Send us a message</h3>
+            <div class="form-row">
+              <label>Name *<input name="name" required /></label>
+              <label>Email *<input name="email" type="email" required /></label>
+            </div>
+            <div class="form-row">
+              <label>Phone<input name="phone" type="tel" /></label>
+              <label
+                >Service Required
+                <select name="service">
+                  <option>Electrical Panels</option>
+                  <option>Electrical Contracting</option>
+                  <option>Solar EPC</option>
+                  <option>Testing &amp; Commissioning</option>
+                  <option>Safety Audit</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+            <label
+              >Message *<textarea name="message" rows="5" required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary btn-lg">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img
+            src="images/sgenlogo (2).png"
+            alt="S-Gen Energy & Infra"
+            class="footer-logo"
+          />
+          <p>
+            Delivering dependable electrical and renewable energy solutions with
+            safety and integrity since 2012.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#projects">Our Projects</a></li>
+            <li><a href="#quality-policy">Quality Policy</a></li>
+            <li><a href="#careers">Careers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Panel Manufacturing</a></li>
+            <li><a href="#services">Electrical Contracting</a></li>
+            <li><a href="#services">Solar EPC</a></li>
+            <li><a href="#services">Testing &amp; Commissioning</a></li>
+            <li><a href="#services">Safety Audit</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li>
+              Plot No 54, Ramachandra Nagar, Iyyappanthangal, Chennai – 600056
+            </li>
+            <li><a href="tel:+917373884554">+91 73738 84554</a></li>
+            <li><a href="mailto:info@sgen.in">info@sgen.in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span
+            >&copy; <span id="year">2026</span> S-Gen Energy &amp; Infra Pvt
+            Ltd. All rights reserved.</span
+          >
+          <span>GST: 33AAYCS8138A1Z4</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Project photo viewer (lightbox) -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Project photo"
+    >
+      <button type="button" class="lb-btn lb-close" aria-label="Close">
+        &times;
+      </button>
+      <button type="button" class="lb-btn lb-prev" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <figure class="lb-figure">
+        <img id="lbImg" src="" alt="" />
+        <figcaption id="lbCaption"></figcaption>
+      </figure>
+      <button type="button" class="lb-btn lb-next" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <polyline points="6 15 12 9 18 15"></polyline>
+      </svg>
     </a>
 
-    <nav id="mainNav" class="nav" aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About Us</a>
-      <div class="nav-dropdown">
-        <a href="#services" class="nav-drop-link">Services
-          <svg class="drop-caret" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </a>
-        <button type="button" class="drop-btn" aria-label="Show services list" aria-expanded="false">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <div class="dropdown-menu">
-          <a href="service.html?s=consultancy">Electrical Consultancy</a>
-          <a href="service.html?s=approvals">Electrical Statutory Approvals</a>
-          <a href="service.html?s=panels">Panel Manufacturing &amp; Automation</a>
-          <a href="service.html?s=contractor">Electrical Contractor</a>
-          <a href="service.html?s=testing">HT / LT Testing &amp; Services</a>
-          <a href="service.html?s=power-study">Power System Study</a>
-          <a href="service.html?s=safety">Safety &amp; Security System</a>
-          <a href="service.html?s=maintenance">Electrical Maintenance</a>
-          <a href="service.html?s=solar">Solar EPC &amp; Energy Storage</a>
-          <a href="#projects" class="dropdown-projects">Our Projects</a>
-        </div>
-      </div>
-      <a href="#products">Products</a>
-      <a href="#quality-policy">Quality Policy</a>
-      <a href="#careers">Careers</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta-mobile">Get a Quote</a>
-    </nav>
+    <script>
+      /* Safety: if sgen.js fails to load, still show all content after 1.5 seconds */
+      setTimeout(function () {
+        document.querySelectorAll(".reveal").forEach(function (el) {
+          el.classList.add("in-view");
+        });
+      }, 1500);
+    </script>
+    <!-- Site script (inside this file, so it always loads) -->
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+  /* =========================================================
+     BASIC ELEMENTS
+     ========================================================= */
+  const header = document.getElementById("siteHeader");
+  const menuBtn = document.getElementById("menuBtn");
+  const mainNav = document.getElementById("mainNav");
+  const yearEl = document.getElementById("year");
+  const backToTop = document.getElementById("backToTop");
 
-    <div class="header-actions">
-      <a href="#contact" class="btn btn-primary header-cta">Get a Quote</a>
-      <button id="menuBtn" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  const dotsWrap = document.getElementById("heroPagination");
+  const hero = document.querySelector(".hero-viewport");
+  const progressBar = document.getElementById("heroProgress");
 
-<!-- ================= HERO (full-width slideshow) ================= -->
-<section id="home" class="hero-viewport" aria-label="Main hero">
+  const applyModal = document.getElementById("applyFormWrap");
+  const careersForm = document.getElementById("careersForm");
+  const contactForm = document.getElementById("contactForm");
+  const appliedRole = document.getElementById("appliedRole");
 
-  <div class="hero-slides" id="heroSlides" aria-live="polite">
+  /* =========================================================
+     FOOTER YEAR
+     ========================================================= */
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    <!-- Slide 1: EV charging station VIDEO (stays 70 sec = full video) -->
-    <div class="hero-slide hero-slide-video" data-duration="70000">
-      <video class="hero-video" id="heroVideo" muted loop playsinline preload="auto"
-             data-wide="ev charging station.mp4"
-             data-tall="ev charging station.mp4"></video>
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <span class="hero-eyebrow">Govt. EV Infrastructure · MTC Chennai</span>
-        <h1>EV Charging Stations<br>for Electric Buses</h1>
-        <p class="lead">240 kW charging stations, HT/LT panels and complete electrical works for MTC electric bus depots in Chennai.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary btn-lg">Get a Quote</a>
-          <a href="#services" class="btn btn-ghost btn-lg">Our Services</a>
-        </div>
-      </div>
-    </div>
+  /* =========================================================
+     MOBILE MENU
+     ========================================================= */
+  const closeMenu = () => {
+    mainNav?.classList.remove("open");
+    menuBtn?.classList.remove("open");
+    menuBtn?.setAttribute("aria-expanded", "false");
+  };
 
-    <!-- Slide 2 -->
-    <div class="hero-slide" style="background-image: url('Indoor-Modern-Design-Factory-Industrial-New-Energy-Resources-LED-Panel-Light-Cleanroom.avif');">
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <span class="hero-eyebrow">Since 2012 · Chennai, Tamil Nadu</span>
-        <h1>Design &amp; Manufacture<br>of Electrical Panels</h1>
-        <p class="lead">Rooftop solar, industrial power systems and turnkey EPC – engineered for safety, built for reliability.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary btn-lg">Get a Quote</a>
-          <a href="#products" class="btn btn-ghost btn-lg">Our Products</a>
-        </div>
-      </div>
-    </div>
+  if (menuBtn && mainNav) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuBtn.classList.toggle("open", isOpen);
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
 
-    <!-- Slide 3 -->
-    <div class="hero-slide" style="background-image: url('ht testing service image.webp');">
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <span class="hero-eyebrow">Turnkey Electrical Projects</span>
-        <h1>Industrial &amp; Commercial<br>Power &amp; Automation</h1>
-        <p class="lead">Complete solutions – design, supply, erection, testing and commissioning.</p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary btn-lg">Talk to Sales</a>
-          <a href="#services" class="btn btn-ghost btn-lg">Our Services</a>
-        </div>
-      </div>
-    </div>
+    // Close menu after clicking a link (mobile)
+    mainNav
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
 
-    <!-- Slide 4 -->
-    <div class="hero-slide" style="background-image: url('LED-Lighting-Solution-for-Healthcare-Industries.webp');">
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <span class="hero-eyebrow">Energy Efficient Solutions</span>
-        <h1>Lighting &amp; Safety<br>Systems for All Sectors</h1>
-        <p class="lead">LED lighting, safety and security installations – efficient, compliant and reliable.</p>
-        <div class="hero-ctas">
-          <a href="#products" class="btn btn-primary btn-lg">View Products</a>
-          <a href="#contact" class="btn btn-ghost btn-lg">Contact Us</a>
-        </div>
-      </div>
-    </div>
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+      if (!mainNav.contains(event.target) && !menuBtn.contains(event.target))
+        closeMenu();
+    });
+  }
 
-    <!-- Slide 5 -->
-    <div class="hero-slide" style="background-image: url('lt-panel-installation-service.jpg');">
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <span class="hero-eyebrow">Inspection &amp; Certification</span>
-        <h1>Electrical<br>Safety Audit</h1>
-        <p class="lead">Thorough inspection and safety certification for your power systems.</p>
-        <div class="hero-ctas">
-          <a href="#services" class="btn btn-primary btn-lg">Explore Services</a>
-          <a href="#contact" class="btn btn-ghost btn-lg">Contact Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  /* =========================================================
+     SERVICES DROPDOWN (mobile: tap the arrow)
+     ========================================================= */
+  document.querySelectorAll(".nav-dropdown").forEach((dd) => {
+    const btn = dd.querySelector(".drop-btn");
+    btn?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = dd.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+    });
+    // after choosing an item, close the list (and remove focus so it hides on desktop)
+    dd.querySelectorAll(".dropdown-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        dd.classList.remove("open");
+        btn?.setAttribute("aria-expanded", "false");
+        link.blur();
+      });
+    });
+  });
 
+  /* =========================================================
+     HERO SLIDER
+     ========================================================= */
+  if (slides.length) {
+    let current = 0;
+    let autoTimer = null;
+    let isHovering = false; // true while the mouse is on the hero banner
+    let leaveTimer = null;
+    let mouseX = -1; // last mouse position on the page
+    let mouseY = -1;
+    let wasInside = false;
+    let lastTouch = 0; // phones: ignore the fake mouse events that come after a tap
+    const AUTO_TIME = 6000;
 
-  <div id="heroPagination" class="hero-pagination"></div>
-  <div class="hero-progress"><span id="heroProgress"></span></div>
-</section>
+    if (progressBar) progressBar.style.setProperty("--auto", `${AUTO_TIME}ms`);
 
-<!-- ================= TRUST STRIP ================= -->
-<section class="trust-strip" aria-label="Company highlights">
-  <div class="container trust-grid">
-    <div class="trust-item">
-      <strong>2012</strong>
-      <span>Established in Chennai</span>
-    </div>
-    <div class="trust-item">
-      <strong>“A” Grade</strong>
-      <span>Electrical Licence EA 3293</span>
-    </div>
-    <div class="trust-item">
-      <strong>End-to-End</strong>
-      <span>Design · Manufacture · Install · Maintain</span>
-    </div>
-    <div class="trust-item">
-      <strong>Pan-India</strong>
-      <span>Clientele across the nation</span>
-    </div>
-  </div>
-</section>
+    /* ---------- Letter-by-letter heading animation ---------- */
+    function wrapHeroWords() {
+      document.querySelectorAll(".hero-slide h1").forEach((heading) => {
+        if (heading.dataset.wordsAnimated === "true") return;
 
-<!-- ================= ABOUT US ================= -->
-<section id="about" class="section about">
+        let letterIndex = 0;
 
-  <!-- Section heading (same style as other sections) -->
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Who We Are</span>
-      <h2 class="section-title">About Us</h2>
-      <p class="section-sub">Design &middot; Manufacture &middot; Install &middot; Maintain – since 2012.</p>
-    </div>
-  </div>
+        function processNode(node, parent) {
+          // Text node -> split into words, then letters
+          if (node.nodeType === Node.TEXT_NODE) {
+            node.textContent.split(/(\s+)/).forEach((part) => {
+              if (!part) return;
 
-  <div class="container about-grid">
-    <div class="about-media reveal">
-      <img src="images/sgenstaffphoto.jpg" alt="S-Gen Energy & Infra team" class="about-photo">
-      <div class="about-badge">
-        <strong>Since 2012</strong>
-        <span>Powering industry with quality &amp; safety</span>
-      </div>
-    </div>
+              if (/^\s+$/.test(part)) {
+                parent.appendChild(document.createTextNode(" "));
+                return;
+              }
 
-    <div class="about-text reveal">
-      <h3 class="about-company">S-Gen Energy &amp; Infra Pvt Ltd</h3>
-      <p>
-        Established in 2012 with our operational headquarters in Chennai, Tamil Nadu, S-Gen Energy and Infra Pvt Ltd
-        is a leading manufacturer, trader and supplier of a wide range of high-quality electrical products –
-        Control Panels, Electrical Panel Boards, Solar solutions and much more.
-      </p>
-      <p>
-        As a quality-conscious organisation, every product passes through multiple quality checks performed by
-        our team of quality analysts using ultra-modern equipment and technologies. Our products are known in the
-        market for smooth finish, reliability, corrosion resistance and premium quality – at budget-friendly rates.
-      </p>
-      <p>
-        We are also a trusted service provider for Electrical Contracting, Electrical Wiring and allied services,
-        delivered by specialists using the latest procedures. Superior products and services have helped us build
-        a strong clientele base across the nation.
-      </p>
+              const word = document.createElement("span");
+              word.className = "hero-word-wrap";
 
-      <ul class="check-list">
-        <li>Panels built to safety standards</li>
-        <li>In-house quality analysts</li>
-        <li>Turnkey electrical contracting</li>
-        <li>Competitive, transparent pricing</li>
-      </ul>
+              part.split("").forEach((letter) => {
+                const letterEl = document.createElement("span");
+                letterEl.className = "hero-letter";
+                letterEl.textContent = letter;
+                letterEl.style.setProperty(
+                  "--letter-delay",
+                  `${0.2 + letterIndex * 0.03}s`,
+                );
+                word.appendChild(letterEl);
+                letterIndex++;
+              });
 
-      <div class="about-ctas">
-        <a href="#services" class="btn btn-primary">Our Services</a>
-        <a href="#contact" class="btn btn-outline-dark">Contact Us</a>
-      </div>
-    </div>
-  </div>
+              parent.appendChild(word);
+            });
+            return;
+          }
 
-  <!-- Vision / Mission / Values -->
-  <div class="container vmv-grid">
-    <article class="vmv-card reveal">
-      <div class="vmv-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-      </div>
-      <h3>Our Vision</h3>
-      <p>
-        To establish S-GEN as the leading and most preferred electrical engineering company, focusing on
-        electrical project execution through innovative, cost-effective engineering solutions and services of
-        international standards.
-      </p>
-    </article>
+          // <br> tag
+          if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BR") {
+            parent.appendChild(document.createElement("br"));
+            return;
+          }
 
-    <article class="vmv-card mission-card reveal">
-      <div class="vmv-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-      </div>
-      <h3>Our Mission</h3>
-      <p class="mission-preview">
-        To provide our customers the highest level of quality services at fair and market-competitive prices,
-        while building successful relationships with our customers and suppliers.
-      </p>
+          // Other elements (span etc.)
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const clone = node.cloneNode(false);
+            parent.appendChild(clone);
+            Array.from(node.childNodes).forEach((child) =>
+              processNode(child, clone),
+            );
+          }
+        }
 
-      <ul class="mission-full" id="missionFull">
-        <li>Maintain the highest level of professionalism, integrity, honesty, fairness and transparency with our suppliers, sub-contractors, associates and employees.</li>
-        <li>Provide quality Electrical Contracting, technical and management services to our customers.</li>
-        <li>Ensure longevity through repeat and referral business built on safety, quality, timely service and anticipating needs.</li>
-        <li>Deliver high-quality, cost-effective projects on schedule with motivated, flexible and focused teams.</li>
-        <li>Stay ahead by innovating new ideas and services based on customer needs and market demand.</li>
-        <li>Promote a culture that fosters individual growth, team spirit and creativity.</li>
-      </ul>
+        const fragment = document.createDocumentFragment();
+        Array.from(heading.childNodes).forEach((child) =>
+          processNode(child, fragment),
+        );
+        heading.innerHTML = "";
+        heading.appendChild(fragment);
+        heading.dataset.wordsAnimated = "true";
+      });
+    }
 
-      <button class="btn-link btn-view-toggle" aria-expanded="false" aria-controls="missionFull">
-        View More <span aria-hidden="true">→</span>
-      </button>
-    </article>
+    function animateHeroWords() {
+      document
+        .querySelectorAll(".hero-slide h1")
+        .forEach((h) => h.classList.remove("animate-words"));
+      const activeHeading = document.querySelector(".hero-slide.active h1");
+      if (!activeHeading) return;
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() =>
+          activeHeading.classList.add("animate-words"),
+        ),
+      );
+    }
 
-    <article class="vmv-card reveal">
-      <div class="vmv-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
-      </div>
-      <h3>Core Values</h3>
-      <ul class="values-list">
-        <li><strong>Safety &amp; Compliance</strong> – zero compromise on site and product safety.</li>
-        <li><strong>Quality &amp; Reliability</strong> – rigorous checks on every panel we build.</li>
-        <li><strong>Customer Focus</strong> – long-term partnerships, timely delivery.</li>
-      </ul>
-    </article>
-  </div>
+    /* ---------- Progress bar ---------- */
+    function restartProgress() {
+      if (!progressBar) return;
+      progressBar.style.setProperty("--auto", `${slideTime()}ms`);
+      progressBar.classList.remove("run");
+      void progressBar.offsetWidth; // force reflow so animation restarts
+      progressBar.classList.add("run");
+    }
+    function pauseProgress(paused) {
+      if (progressBar)
+        progressBar.style.animationPlayState = paused ? "paused" : "running";
+    }
 
-  <!-- Company Info -->
-  <div class="container">
-    <div class="company-info reveal">
-      <div class="company-info-head">
-        <span class="eyebrow eyebrow-light">Corporate Profile</span>
-        <h3>Company Information</h3>
-      </div>
-      <dl class="info-grid">
-        <div><dt>Name of Company</dt><dd>S-Gen Energy and Infra Pvt Ltd</dd></div>
-        <div><dt>Registered Address</dt><dd>Plot No 54, Ramachandra Nagar, Iyyappanthangal, Chennai – 600056</dd></div>
-        <div><dt>Contact Numbers</dt><dd>044-4260 4554 / +91 73738 84554</dd></div>
-        <div><dt>E-mail</dt><dd><a href="mailto:info@sgen.in">info@sgen.in</a></dd></div>
-        <div><dt>Website</dt><dd>www.sgen.in</dd></div>
-        <div><dt>Managing Director</dt><dd>Dr. S. Senthil Raj, M.E., Ph.D., MIE., C.Eng.</dd></div>
-        <div><dt>Director</dt><dd>Mr. P. Suresh, B.E.</dd></div>
-        <div><dt>GST No</dt><dd>33AAYCS8138A1Z4</dd></div>
-        <div><dt>PAN No</dt><dd>AAYCS8138A</dd></div>
-        <div><dt>“A” Grade Licence No</dt><dd>EA 3293</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
+    wrapHeroWords();
 
-<!-- ================= SERVICES ================= -->
-<section id="services" class="section services">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">What We Do</span>
-      <h2 class="section-title">Our Services</h2>
-      <p class="section-sub">Complete electrical solutions – from consultancy and approvals to installation, testing and maintenance.</p>
-    </div>
+    /* ---------- Pagination dots ---------- */
+    const dots = [];
+    if (dotsWrap) {
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+        dot.addEventListener("click", () => {
+          current = index;
+          showSlide(current, true);
+        });
+        dots.push(dot);
+        dotsWrap.appendChild(dot);
+      });
+    }
 
-    <div class="service-grid">
-      <article class="service-card reveal" id="svc-consultancy">
-        <span class="service-num">01</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div>
-        <h3>Electrical Consultancy</h3>
-        <p>Detailed planning, cost estimates, tender support and feasibility studies for HT &amp; LT installations and turnkey projects.</p>
-        <a href="service.html?s=consultancy" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    /* ---------- Hero video (slide 1): wide video for laptop, tall for mobile ---------- */
+    const heroVideo = document.getElementById("heroVideo");
+    if (heroVideo) {
+      const isTall = window.matchMedia(
+        "(max-width: 768px) and (orientation: portrait)",
+      ).matches;
+      heroVideo.src = isTall ? heroVideo.dataset.tall : heroVideo.dataset.wide;
+    }
+    // play the video only while its slide is showing, from the start each time
+    function syncVideo(index) {
+      if (!heroVideo) return;
+      if (slides[index].contains(heroVideo)) {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+      }
+    }
 
-      <article class="service-card reveal" id="svc-approvals">
-        <span class="service-num">02</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
-        <h3>Electrical Statutory Approvals</h3>
-        <p>End-to-end support for electrical approvals and liaisoning with statutory authorities.</p>
-        <a href="service.html?s=approvals" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    // each slide can have its own time: data-duration="18000" (ms). Others use AUTO_TIME.
+    function slideTime() {
+      return Number(slides[current].dataset.duration) || AUTO_TIME;
+    }
 
-      <article class="service-card reveal" id="svc-panels">
-        <span class="service-num">03</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8"/><circle cx="9" cy="16" r="1.5"/><circle cx="15" cy="16" r="1.5"/></svg></div>
-        <h3>Panel Manufacturing &amp; Automation</h3>
-        <p>LT, PCC, MCC, APFC and control panels, plus industrial automation systems built to your specifications.</p>
-        <a href="service.html?s=panels" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    /* ---------- Show slide ---------- */
+    function showSlide(index, restart = false) {
+      slides.forEach((slide, i) =>
+        slide.classList.toggle("active", i === index),
+      );
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+      animateHeroWords();
+      syncVideo(index);
+      restartProgress();
+      if (isHovering) {
+        stopAuto();
+        pauseProgress(true);
+        return;
+      }
+      if (restart) startAuto();
+    }
 
-      <article class="service-card reveal" id="svc-contractor">
-        <span class="service-num">04</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
-        <h3>Electrical Contractor</h3>
-        <p>HT/LT works – bus ducts, rising mains, cable trays, cable laying &amp; termination, indoor/outdoor lighting and earthing.</p>
-        <a href="service.html?s=contractor" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
 
-      <article class="service-card reveal" id="svc-testing">
-        <span class="service-num">05</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
-        <h3>HT / LT Testing &amp; Services</h3>
-        <p>Testing, relay calibration and commissioning of HT and LT systems by certified engineers.</p>
-        <a href="service.html?s=testing" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    /* ---------- Auto slide ---------- */
+    // true when the mouse is on the hero banner (checked two ways, so it never misses)
+    function mouseOnHero() {
+      return isHovering || pointInHero();
+    }
 
-      <article class="service-card reveal" id="svc-power-study">
-        <span class="service-num">06</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div>
-        <h3>Power System Study</h3>
-        <p>Load flow, power quality and protection studies to keep your electrical system safe and efficient.</p>
-        <a href="service.html?s=power-study" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    function startAuto() {
+      stopAuto();
+      if (mouseOnHero()) {
+        pauseProgress(true); // mouse is on the banner: stay on this slide
+        return;
+      }
+      autoTimer = setTimeout(() => {
+        if (mouseOnHero()) {
+          pauseProgress(true); // mouse came onto the banner: don't move
+          return;
+        }
+        nextSlide();
+        startAuto();
+      }, slideTime());
+      pauseProgress(false);
+    }
+    function stopAuto() {
+      if (autoTimer) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+    }
 
-      <article class="service-card reveal" id="svc-safety">
-        <span class="service-num">07</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Safety &amp; Security System</h3>
-        <p>Electrical safety audits, safety and security system installations for all sectors.</p>
-        <a href="service.html?s=safety" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    showSlide(current);
+    startAuto();
 
-      <article class="service-card reveal" id="svc-maintenance">
-        <span class="service-num">08</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
-        <h3>Electrical Maintenance (AMC)</h3>
-        <p>Annual maintenance for all HT/LT electrical equipment, along with skilled manpower services.</p>
-        <a href="service.html?s=maintenance" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
+    /* ---------- Pause on hover, go to next slide 1 sec after cursor leaves ---------- */
+    // We watch where the mouse is on the whole page and check if it is inside the banner.
+    // This works the same in Firefox, Chrome and Edge.
 
-      <article class="service-card reveal" id="svc-solar">
-        <span class="service-num">09</span>
-        <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
-        <h3>Solar EPC &amp; Energy Storage</h3>
-        <p>Rooftop and ground-mounted solar EPC with battery and hybrid backup systems.</p>
-        <a href="service.html?s=solar" class="btn-link svc-more">Read More <span aria-hidden="true">→</span></a>
-      </article>
-    </div>
+    function pointInHero() {
+      if (!hero || mouseX < 0) return false;
+      const r = hero.getBoundingClientRect();
+      return mouseX >= r.left && mouseX <= r.right && mouseY >= r.top && mouseY <= r.bottom;
+    }
 
-    <!-- AMC call-to-action strip -->
-    <div class="amc-strip reveal">
-      <div>
-        <h3>Looking for reliable maintenance?</h3>
-        <p>Join our Annual Maintenance Contract (AMC) for HT/LT equipment – planned upkeep, fewer breakdowns.</p>
-      </div>
-      <div class="amc-actions">
-        <a href="#projects" class="btn btn-ghost">View Our Projects</a>
-        <a href="#contact" class="btn btn-primary">Join for AMC</a>
-      </div>
-    </div>
-  </div>
-</section>
+    function checkMouse() {
+      const inside = pointInHero();
+      if (inside && !wasInside) {
+        // mouse came onto the banner: stop
+        isHovering = true;
+        clearTimeout(leaveTimer);
+        stopAuto();
+        pauseProgress(true);
+      } else if (!inside && wasInside) {
+        // mouse left the banner: next slide after 1 second, then continue
+        isHovering = false;
+        clearTimeout(leaveTimer);
+        leaveTimer = setTimeout(() => {
+          nextSlide();
+          startAuto();
+        }, 1000);
+      }
+      wasInside = inside;
+    }
 
-<!-- ================= PRODUCTS ================= -->
-<section id="products" class="section products">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Our Range</span>
-      <h2 class="section-title">Our Products</h2>
-      <p class="section-sub">Electrical panels and infrastructure solutions we design, build and deliver.</p>
-    </div>
+    document.addEventListener("touchstart", () => { lastTouch = Date.now(); }, { passive: true });
+    document.addEventListener("mousemove", (e) => {
+      if (Date.now() - lastTouch < 1000) return;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      checkMouse();
+    });
+    // scrolling moves the banner under a still mouse, so check again
+    window.addEventListener("scroll", checkMouse, { passive: true });
+    // mouse went out of the browser window
+    document.documentElement.addEventListener("mouseleave", () => {
+      mouseX = -1;
+      mouseY = -1;
+      checkMouse();
+    });
 
-    <div class="products-grid">
-      <article class="product-card reveal">
-        <div class="product-media"><img src="panel2.jpg" alt="Main LT Panel" loading="lazy"></div>
-        <div class="product-body">
-          <span class="product-tag">LT Panels</span>
-          <h3>Main LT Panel</h3>
-          <p>Custom-designed main LT panels with durable construction built to safety standards.</p>
-          <a href="#contact" class="btn-link">Enquire Now <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+    /* ---------- Swipe on mobile ---------- */
+    let touchX = null;
+    hero?.addEventListener(
+      "touchstart",
+      (e) => {
+        touchX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
+    hero?.addEventListener("touchend", (e) => {
+      if (touchX === null) return;
+      const diff = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(diff) > 50) {
+        diff < 0 ? nextSlide() : prevSlide();
+        startAuto();
+      }
+      touchX = null;
+    });
 
-      <article class="product-card reveal">
-        <div class="product-media"><img src="relay-testing.webp" alt="Power Control Centre" loading="lazy"></div>
-        <div class="product-body">
-          <span class="product-tag">PCC</span>
-          <h3>Power Control Centre</h3>
-          <p>Robust power distribution and control for industrial and commercial installations.</p>
-          <a href="#contact" class="btn-link">Enquire Now <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
+    /* ---------- Keyboard arrows ---------- */
+    document.addEventListener("keydown", (e) => {
+      if (applyModal?.classList.contains("open")) return;
+      if (document.getElementById("lightbox")?.classList.contains("open"))
+        return;
+      if (e.key === "ArrowRight") {
+        nextSlide();
+        startAuto();
+      }
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        startAuto();
+      }
+    });
+  }
 
-      <article class="product-card reveal">
-        <div class="product-media"><img src="panel board design.jpg" alt="APFC Panel" loading="lazy"></div>
-        <div class="product-body">
-          <span class="product-tag">Power Quality</span>
-          <h3>APFC Panel</h3>
-          <p>Automatic Power Factor Correction panels to optimise power usage and reduce energy costs.</p>
-          <a href="#contact" class="btn-link">Enquire Now <span aria-hidden="true">→</span></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+  /* =========================================================
+     HEADER SHADOW + ACTIVE NAV LINK + BACK TO TOP
+     ========================================================= */
+  const navLinks = Array.from(document.querySelectorAll("#mainNav a")).filter(
+    (a) => {
+      const href = a.getAttribute("href") || "";
+      return (
+        href.startsWith("#") &&
+        href.length > 1 &&
+        !a.classList.contains("nav-cta-mobile") &&
+        !a.closest(".dropdown-menu")
+      );
+    },
+  );
 
-<!-- ================= QUALITY POLICY ================= -->
-<section id="quality-policy" class="section quality">
-  <div class="container">
-    <div class="section-head section-head-light reveal">
-      <span class="eyebrow eyebrow-light">Our Commitment</span>
-      <h2 class="section-title">Quality Policy</h2>
-      <p class="section-sub">Our commitment to quality, safety and continual improvement.</p>
-    </div>
+  function onScroll() {
+    const y = window.scrollY;
 
-    <div class="policy-grid">
-      <article class="policy-card reveal">
-        <span class="policy-num">01</span>
-        <h3>Our Commitment</h3>
-        <p>S-Gen Energy &amp; Infra is committed to delivering products and services that conform to statutory, regulatory and client requirements through robust processes and a culture of continual improvement.</p>
-      </article>
+    header?.classList.toggle("scrolled", y > 10);
+    backToTop?.classList.toggle("show", y > 600);
 
-      <article class="policy-card reveal">
-        <span class="policy-num">02</span>
-        <h3>Key Principles</h3>
-        <ul>
-          <li>Meet or exceed customer requirements and expectations.</li>
-          <li>Maintain strict safety and environmental standards on every project.</li>
-          <li>Adopt best-practice quality controls in design, manufacture and commissioning.</li>
-        </ul>
-      </article>
+    const probe = y + 160;
+    let activeHref = "#home";
+    let best = -1;
 
-      <article class="policy-card reveal">
-        <span class="policy-num">03</span>
-        <h3>What We Measure</h3>
-        <ul>
-          <li>On-time delivery and project milestones.</li>
-          <li>Product conformity and first-time pass rates.</li>
-          <li>Customer satisfaction and corrective actions closed.</li>
-        </ul>
-      </article>
-    </div>
+    navLinks.forEach((a) => {
+      const section = document.querySelector(a.getAttribute("href"));
+      if (!section) return;
+      const top = section.getBoundingClientRect().top + window.scrollY;
+      if (top <= probe && top > best) {
+        best = top;
+        activeHref = a.getAttribute("href");
+      }
+    });
 
-    <div class="policy-actions reveal">
-      <a href="assets/SGEN-Quality-policy.pdf" class="btn btn-primary" target="_blank" rel="noopener">
-        Download Quality Policy (PDF)
-      </a>
-    </div>
-  </div>
-</section>
+    // Our Projects is part of Services, so highlight "Services" there
+    const projects = document.getElementById("projects");
+    if (projects) {
+      const pTop = projects.getBoundingClientRect().top + window.scrollY;
+      if (pTop <= probe && pTop > best) activeHref = "#services";
+    }
 
-<!-- ================= CAREERS ================= -->
-<section id="careers" class="section careers">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Join Our Team</span>
-      <h2 class="section-title">Careers</h2>
-      <p class="section-sub">We look for passionate people who care about engineering, safety and service delivery.</p>
-    </div>
+    navLinks.forEach((a) =>
+      a.classList.toggle("active", a.getAttribute("href") === activeHref),
+    );
+  }
 
-    <div class="jobs-grid">
-      <article class="job-card reveal">
-        <div class="job-top">
-          <h3>Electrical Site Engineer</h3>
-          <span class="job-type">Full-time</span>
-        </div>
-        <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 1–5 years</p>
-        <ul>
-          <li>Site supervision for panel installation, testing &amp; commissioning</li>
-          <li>Coordinate with QA/QC and project managers</li>
-          <li>Valid safety &amp; testing certifications preferred</li>
-        </ul>
-        <button class="btn btn-outline-dark apply-btn" data-role="Electrical Site Engineer">Apply Now</button>
-      </article>
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-      <article class="job-card reveal">
-        <div class="job-top">
-          <h3>Design Engineer – LT Panels</h3>
-          <span class="job-type">Full-time</span>
-        </div>
-        <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 2–5 years</p>
-        <ul>
-          <li>Panel layout &amp; wiring diagram preparation</li>
-          <li>Bill of materials and vendor coordination</li>
-        </ul>
-        <button class="btn btn-outline-dark apply-btn" data-role="Design Engineer – LT Panels">Apply Now</button>
-      </article>
+  /* =========================================================
+     SCROLL REVEAL ANIMATION
+     ========================================================= */
+  const revealEls = document.querySelectorAll(".reveal");
 
-      <article class="job-card reveal">
-        <div class="job-top">
-          <h3>Service Technician</h3>
-          <span class="job-type">Full-time</span>
-        </div>
-        <p class="job-meta">📍 Chennai &nbsp;•&nbsp; 1–3 years</p>
-        <ul>
-          <li>O&amp;M support, troubleshooting and preventive maintenance</li>
-          <li>Basic electrical testing, earthing and safety checks</li>
-        </ul>
-        <button class="btn btn-outline-dark apply-btn" data-role="Service Technician">Apply Now</button>
-      </article>
-    </div>
-  </div>
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
 
-  <!-- Application modal -->
-  <div class="modal" id="applyFormWrap" aria-hidden="true">
-    <div class="modal-backdrop" data-close></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="applyTitle">
-      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
-      <form id="careersForm" class="form" enctype="multipart/form-data">
-        <h3 id="applyTitle">Apply for <span id="appliedRole">Position</span></h3>
-        <div class="form-row">
-          <label>Full Name *<input type="text" name="fullname" required></label>
-          <label>Email *<input type="email" name="email" required></label>
-        </div>
-        <div class="form-row">
-          <label>Phone<input type="tel" name="phone"></label>
-          <label>Current Location<input type="text" name="location"></label>
-        </div>
-        <label>Cover Note<textarea name="cover" rows="4" placeholder="Short note about your experience"></textarea></label>
-        <label>Upload CV (PDF / DOC) *<input type="file" name="cv" accept=".pdf,.doc,.docx" required></label>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Submit Application</button>
-          <button type="button" id="cancelApply" class="btn btn-outline-dark" data-close>Cancel</button>
-        </div>
-        <p id="applyMsg" class="form-msg" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
-</section>
+    // Small stagger for cards placed side by side
+    revealEls.forEach((el) => {
+      const siblings = Array.from(el.parentElement.children).filter((c) =>
+        c.classList.contains("reveal"),
+      );
+      const i = siblings.indexOf(el);
+      if (siblings.length > 1)
+        el.style.transitionDelay = `${Math.min(i, 5) * 0.08}s`;
+      observer.observe(el);
+    });
+  } else {
+    revealEls.forEach((el) => el.classList.add("in-view"));
+  }
 
-<!-- ================= CLIENTS ================= -->
-<section id="clients" class="section clients">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Our Clients</span>
-      <h2 class="section-title">Trusted by Leading Organisations</h2>
-    </div>
-  </div>
-  <div class="clients-marquee" aria-label="Our clients">
-    <ul class="clients-track" id="clientsList">
-      <li class="client-item"><img src="subway logo1.png" alt="Subway" loading="lazy"></li>
-      <li class="client-item"><img src="l and t logo.jpeg" alt="Larsen & Toubro" loading="lazy"></li>
-      <!-- Add more client logos here: <li class="client-item"><img src="logo.png" alt="Client name"></li> -->
-    </ul>
-  </div>
-</section>
+  /* =========================================================
+     CARD CLICK — ZOOM IN & OUT ANIMATION
+     ========================================================= */
+  document
+    .querySelectorAll(
+      ".vmv-card, .service-card, .product-card, .policy-card, .job-card, .leader-card",
+    )
+    .forEach((card) => {
+      card.addEventListener("click", (event) => {
+        // Don't animate when a button or link inside the card is clicked
+        if (event.target.closest("a, button")) return;
 
-<!-- ================= CTA BAND ================= -->
-<section class="cta-band">
-  <div class="container cta-inner">
-    <div>
-      <h2>Planning an electrical or solar project?</h2>
-      <p>Talk to our engineers for a free consultation and a detailed quotation.</p>
-    </div>
-    <div class="cta-actions">
-      <a href="#contact" class="btn btn-light btn-lg">Request a Quote</a>
-      <a href="tel:+917373884554" class="btn btn-ghost btn-lg">Call +91 73738 84554</a>
-    </div>
-  </div>
-</section>
+        card.classList.remove("card-zoom");
+        void card.offsetWidth; // restart animation on every click
+        card.classList.add("card-zoom");
+      });
+      card.addEventListener("animationend", () =>
+        card.classList.remove("card-zoom"),
+      );
+    });
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section contact">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Get In Touch</span>
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-sub">Tell us about your project – we'll get back to you within 2 business days.</p>
-    </div>
+  /* =========================================================
+     MISSION VIEW MORE / VIEW LESS
+     ========================================================= */
+  const toggleBtn = document.querySelector(".btn-view-toggle");
+  const missionFull = document.querySelector(".mission-full");
 
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="info-item">
-          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div>
-            <h4>Registered Office</h4>
-            <p>Plot No 54, Ramachandra Nagar,<br>Iyyappanthangal, Chennai – 600056,<br>Tamil Nadu, India</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
-          <div>
-            <h4>Phone</h4>
-            <p><a href="tel:04442604554">044-4260 4554</a><br><a href="tel:+917373884554">+91 73738 84554</a></p>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
-          <div>
-            <h4>Email</h4>
-            <p><a href="mailto:info@sgen.in">info@sgen.in</a></p>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div>
-            <h4>Working Hours</h4>
-            <p>Monday – Saturday : 9:00 AM – 6:00 PM</p>
-          </div>
-        </div>
-      </div>
+  if (toggleBtn && missionFull) {
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = missionFull.classList.toggle("open");
+      toggleBtn.innerHTML = isOpen
+        ? 'View Less <span aria-hidden="true">↑</span>'
+        : 'View More <span aria-hidden="true">→</span>';
+      toggleBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
 
-      <form id="contactForm" class="form contact-form reveal" action="https://formspree.io/f/your-form-id" method="POST">
-        <h3>Send us a message</h3>
-        <div class="form-row">
-          <label>Name *<input name="name" required></label>
-          <label>Email *<input name="email" type="email" required></label>
-        </div>
-        <div class="form-row">
-          <label>Phone<input name="phone" type="tel"></label>
-          <label>Service Required
-            <select name="service">
-              <option>Electrical Panels</option>
-              <option>Electrical Contracting</option>
-              <option>Solar EPC</option>
-              <option>Testing &amp; Commissioning</option>
-              <option>Safety Audit</option>
-              <option>Other</option>
-            </select>
-          </label>
-        </div>
-        <label>Message *<textarea name="message" rows="5" required></textarea></label>
-        <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-      </form>
-    </div>
-  </div>
-</section>
+  /* =========================================================
+     CLIENT LOGOS — duplicate list for seamless scrolling
+     ========================================================= */
+  const clientsList = document.getElementById("clientsList");
+  if (clientsList) {
+    const original = Array.from(clientsList.children);
+    // Repeat logos until the strip is wide enough, then double it for the loop
+    let copies = Math.max(1, Math.ceil(8 / original.length));
+    for (let c = 1; c < copies; c++) {
+      original.forEach((li) => clientsList.appendChild(li.cloneNode(true)));
+    }
+    Array.from(clientsList.children).forEach((li) => {
+      const clone = li.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clientsList.appendChild(clone);
+    });
+  }
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <img src="images/sgenlogo (2).png" alt="S-Gen Energy & Infra" class="footer-logo">
-      <p>Delivering dependable electrical and renewable energy solutions with safety and integrity since 2012.</p>
-    </div>
+  /* =========================================================
+     OUR PROJECTS — LIGHTBOX (click a photo to see it big)
+     ========================================================= */
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  const lbCaption = document.getElementById("lbCaption");
+  const projectItems = Array.from(document.querySelectorAll(".project-item"));
+  let lbIndex = 0;
 
-    <div>
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#quality-policy">Quality Policy</a></li>
-        <li><a href="#careers">Careers</a></li>
-      </ul>
-    </div>
+  function showPhoto(index) {
+    lbIndex = (index + projectItems.length) % projectItems.length; // loop around
+    const item = projectItems[lbIndex];
+    lbImg.src = item.getAttribute("href");
+    lbImg.alt = item.dataset.caption || "";
+    lbCaption.textContent = item.dataset.caption || "";
+  }
 
-    <div>
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#services">Panel Manufacturing</a></li>
-        <li><a href="#services">Electrical Contracting</a></li>
-        <li><a href="#services">Solar EPC</a></li>
-        <li><a href="#services">Testing &amp; Commissioning</a></li>
-        <li><a href="#services">Safety Audit</a></li>
-      </ul>
-    </div>
+  function openLightbox(index) {
+    showPhoto(index);
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+  }
 
-    <div>
-      <h4>Contact</h4>
-      <ul class="footer-contact">
-        <li>Plot No 54, Ramachandra Nagar, Iyyappanthangal, Chennai – 600056</li>
-        <li><a href="tel:+917373884554">+91 73738 84554</a></li>
-        <li><a href="mailto:info@sgen.in">info@sgen.in</a></li>
-      </ul>
-    </div>
-  </div>
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+  }
 
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <span>&copy; <span id="year">2026</span> S-Gen Energy &amp; Infra Pvt Ltd. All rights reserved.</span>
-      <span>GST: 33AAYCS8138A1Z4</span>
-    </div>
-  </div>
-</footer>
+  if (lightbox && projectItems.length) {
+    projectItems.forEach((item, i) => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault(); // stay on the page, don't open the image file
+        openLightbox(i);
+      });
+    });
 
-<a href="#home" class="back-to-top" id="backToTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 15 12 9 18 15"></polyline></svg>
-</a>
+    lightbox
+      .querySelector(".lb-close")
+      .addEventListener("click", closeLightbox);
+    lightbox
+      .querySelector(".lb-prev")
+      .addEventListener("click", () => showPhoto(lbIndex - 1));
+    lightbox
+      .querySelector(".lb-next")
+      .addEventListener("click", () => showPhoto(lbIndex + 1));
 
-<script src="sgen.js"></script>
-</body>
+    // click on the dark background closes it
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    // keyboard: Esc closes, arrows change photo
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showPhoto(lbIndex + 1);
+      if (e.key === "ArrowLeft") showPhoto(lbIndex - 1);
+    });
+
+    // swipe on phones
+    let lbTouchX = null;
+    lightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        lbTouchX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
+    lightbox.addEventListener("touchend", (e) => {
+      if (lbTouchX === null) return;
+      const diff = e.changedTouches[0].clientX - lbTouchX;
+      if (Math.abs(diff) > 50) showPhoto(diff < 0 ? lbIndex + 1 : lbIndex - 1);
+      lbTouchX = null;
+    });
+  }
+
+  /* =========================================================
+     CAREERS — APPLY MODAL
+     ========================================================= */
+  const openApply = (role) => {
+    if (appliedRole) appliedRole.textContent = role;
+    applyModal?.classList.add("open");
+    applyModal?.setAttribute("aria-hidden", "false");
+    document.body.classList.add("no-scroll");
+    setTimeout(() => applyModal?.querySelector("input")?.focus(), 200);
+  };
+
+  const closeApply = () => {
+    applyModal?.classList.remove("open");
+    applyModal?.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("no-scroll");
+  };
+
+  document.querySelectorAll(".apply-btn").forEach((button) => {
+    button.addEventListener("click", () =>
+      openApply(button.dataset.role || "Position"),
+    );
+  });
+
+  applyModal
+    ?.querySelectorAll("[data-close]")
+    .forEach((el) => el.addEventListener("click", closeApply));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && applyModal?.classList.contains("open"))
+      closeApply();
+  });
+
+  if (careersForm) {
+    careersForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const applyMsg = document.getElementById("applyMsg");
+      if (applyMsg)
+        applyMsg.textContent =
+          "✓ Application submitted successfully. Our team will review your CV shortly.";
+      careersForm.reset();
+      setTimeout(() => {
+        closeApply();
+        if (applyMsg) applyMsg.textContent = "";
+      }, 2000);
+    });
+  }
+
+  /* =========================================================
+     CONTACT FORM
+     ========================================================= */
+  if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // remove this line once your Formspree ID is added
+      const submitButton = contactForm.querySelector("button[type='submit']");
+      if (!submitButton) return;
+
+      const original = submitButton.textContent;
+      submitButton.textContent = "✓ Message Sent";
+      submitButton.disabled = true;
+
+      setTimeout(() => {
+        submitButton.textContent = original;
+        submitButton.disabled = false;
+        contactForm.reset();
+      }, 2000);
+    });
+  }
+});
+
+    </script>
+    <script>
+      /* Certificates: click a card to see it full size (uses the photo that is already showing) */
+      (function () {
+        var lb = document.getElementById("lightbox");
+        var lbImg = document.getElementById("lbImg");
+        var lbCap = document.getElementById("lbCaption");
+        if (!lb) return;
+        var arrows = lb.querySelectorAll(".lb-prev, .lb-next");
+        document.querySelectorAll(".cert-card").forEach(function (card) {
+          card.addEventListener("click", function (e) {
+            e.preventDefault();
+            var img = card.querySelector("img");
+            lbImg.src = img.currentSrc || img.src;
+            lbImg.alt = img.alt;
+            lbCap.textContent = card.querySelector("h4").textContent;
+            arrows.forEach(function (a) { a.style.display = "none"; });
+            lb.classList.add("open");
+            lb.setAttribute("aria-hidden", "false");
+            document.body.classList.add("no-scroll");
+          });
+        });
+        // show the arrows again when a project photo is opened
+        document.querySelectorAll(".project-item").forEach(function (item) {
+          item.addEventListener("click", function () {
+            arrows.forEach(function (a) { a.style.display = ""; });
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>

@@ -192,4 +192,3 @@ const SGEN_SERVICES = [
       "Energy savings assessment"
     ]
   }
-];
