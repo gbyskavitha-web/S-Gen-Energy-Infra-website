@@ -90,6 +90,20 @@
       .clients-track { animation-duration: 60s; }
       .client-item { width: 180px; height: 96px; padding: 14px 20px; }
       .client-item img { max-height: 62px; max-width: 100%; filter: none; opacity: 1; } /* logos always in original colour */
+      /* MOBILE — top bar shows phone, email, licence and working hours (2 lines) */
+      @media (max-width: 768px) {
+        :root { --topbar-h: 62px; }
+        .topbar { height: auto; padding: 6px 0; }
+        .topbar-inner { flex-direction: column; gap: 3px; justify-content: center; }
+        .topbar-left, .topbar-right { display: flex !important; justify-content: center; flex-wrap: wrap; gap: 4px 14px; font-size: 0.74rem; }
+        .topbar-left a:last-child { display: inline-flex !important; }
+        .topbar svg { width: 13px; height: 13px; }
+        /* hero text: more space from the left edge */
+        .hero-content { padding-left: 28px; padding-right: 24px; }
+      }
+      @media (max-width: 400px) {
+        .topbar-left, .topbar-right { font-size: 0.68rem; gap: 3px 10px; }
+      }
     </style>
   </head>
 
