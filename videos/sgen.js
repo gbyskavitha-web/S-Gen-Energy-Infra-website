@@ -606,17 +606,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (careersForm) {
-    careersForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const applyMsg = document.getElementById("applyMsg");
-      if (applyMsg)
-        applyMsg.textContent =
-          "✓ Application submitted successfully. Our team will review your CV shortly.";
-      careersForm.reset();
-      setTimeout(() => {
-        closeApply();
-        if (applyMsg) applyMsg.textContent = "";
-      }, 2000);
+    careersForm.addEventListener("submit", () => {
+      // the form now really sends to info@sgen.in
+      const role = document.getElementById("appliedRole");
+      const pos = document.getElementById("positionField");
+      if (role && pos) pos.value = role.textContent;
+      const btn = careersForm.querySelector("button[type='submit']");
+      if (btn) btn.textContent = "Sending...";
     });
   }
 
@@ -624,20 +620,10 @@ document.addEventListener("DOMContentLoaded", () => {
      CONTACT FORM
      ========================================================= */
   if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
-      event.preventDefault(); // remove this line once your Formspree ID is added
-      const submitButton = contactForm.querySelector("button[type='submit']");
-      if (!submitButton) return;
-
-      const original = submitButton.textContent;
-      submitButton.textContent = "✓ Message Sent";
-      submitButton.disabled = true;
-
-      setTimeout(() => {
-        submitButton.textContent = original;
-        submitButton.disabled = false;
-        contactForm.reset();
-      }, 2000);
+    contactForm.addEventListener("submit", () => {
+      // the form now really sends to info@sgen.in
+      const btn = contactForm.querySelector("button[type='submit']");
+      if (btn) btn.textContent = "Sending...";
     });
   }
 });

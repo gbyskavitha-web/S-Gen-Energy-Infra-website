@@ -89,7 +89,7 @@
       /* CLIENTS — logo boxes */
       .clients-track { animation-duration: 60s; }
       .client-item { width: 180px; height: 96px; padding: 14px 20px; }
-      .client-item img { max-height: 62px; max-width: 100%; filter: none; opacity: 1; } /* logos always in original colour */
+      .client-item img { max-height: 62px; max-width: 100%; } /* grey logos, original colour on mouse hover */
       /* MOBILE — top bar shows phone, email, licence and working hours (2 lines) */
       @media (max-width: 768px) {
         :root { --topbar-h: 62px; }
@@ -1616,7 +1616,16 @@
           >
             &times;
           </button>
-          <form id="careersForm" class="form" enctype="multipart/form-data">
+          <form
+            id="careersForm"
+            class="form"
+            action="https://formsubmit.co/info@sgen.in"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input type="hidden" name="_subject" value="New job application from S-Gen website" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="position" id="positionField" value="" />
             <h3 id="applyTitle">
               Apply for <span id="appliedRole">Position</span>
             </h3>
@@ -1797,10 +1806,12 @@
           <form
             id="contactForm"
             class="form contact-form reveal"
-            action="https://formspree.io/f/your-form-id"
+            action="https://formsubmit.co/info@sgen.in"
             method="POST"
           >
             <h3>Send us a message</h3>
+            <input type="hidden" name="_subject" value="New enquiry from S-Gen website" />
+            <input type="hidden" name="_template" value="table" />
             <div class="form-row">
               <label>Name *<input name="name" required /></label>
               <label>Email *<input name="email" type="email" required /></label>
@@ -1810,11 +1821,17 @@
               <label
                 >Service Required
                 <select name="service">
-                  <option>Electrical Panels</option>
+                  <option>EV Charging Infrastructure</option>
+                  <option>Electrical Consultancy</option>
+                  <option>Electrical Statutory Approvals</option>
+                  <option>Panel Manufacturing &amp; Automation</option>
                   <option>Electrical Contracting</option>
-                  <option>Solar EPC</option>
-                  <option>Testing &amp; Commissioning</option>
-                  <option>Safety Audit</option>
+                  <option>HT / LT Testing &amp; Services</option>
+                  <option>Power System Study</option>
+                  <option>Safety &amp; Security System</option>
+                  <option>Electrical Maintenance (AMC)</option>
+                  <option>Solar EPC &amp; Energy Storage</option>
+                  <option>Products / Panels Enquiry</option>
                   <option>Other</option>
                 </select>
               </label>
@@ -1860,11 +1877,12 @@
         <div>
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">Panel Manufacturing</a></li>
-            <li><a href="#services">Electrical Contracting</a></li>
-            <li><a href="#services">Solar EPC</a></li>
-            <li><a href="#services">Testing &amp; Commissioning</a></li>
-            <li><a href="#services">Safety Audit</a></li>
+            <li><a href="service.html?s=ev">EV Charging Infrastructure</a></li>
+            <li><a href="service.html?s=panels">Panel Manufacturing</a></li>
+            <li><a href="service.html?s=contractor">Electrical Contracting</a></li>
+            <li><a href="service.html?s=testing">Testing &amp; Commissioning</a></li>
+            <li><a href="service.html?s=solar">Solar EPC</a></li>
+            <li><a href="service.html?s=safety">Safety Audit</a></li>
           </ul>
         </div>
 
@@ -2543,17 +2561,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (careersForm) {
-    careersForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const applyMsg = document.getElementById("applyMsg");
-      if (applyMsg)
-        applyMsg.textContent =
-          "✓ Application submitted successfully. Our team will review your CV shortly.";
-      careersForm.reset();
-      setTimeout(() => {
-        closeApply();
-        if (applyMsg) applyMsg.textContent = "";
-      }, 2000);
+    careersForm.addEventListener("submit", () => {
+      // the form now really sends to info@sgen.in
+      const role = document.getElementById("appliedRole");
+      const pos = document.getElementById("positionField");
+      if (role && pos) pos.value = role.textContent;
+      const btn = careersForm.querySelector("button[type='submit']");
+      if (btn) btn.textContent = "Sending...";
     });
   }
 
@@ -2561,20 +2575,10 @@ document.addEventListener("DOMContentLoaded", () => {
      CONTACT FORM
      ========================================================= */
   if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
-      event.preventDefault(); // remove this line once your Formspree ID is added
-      const submitButton = contactForm.querySelector("button[type='submit']");
-      if (!submitButton) return;
-
-      const original = submitButton.textContent;
-      submitButton.textContent = "✓ Message Sent";
-      submitButton.disabled = true;
-
-      setTimeout(() => {
-        submitButton.textContent = original;
-        submitButton.disabled = false;
-        contactForm.reset();
-      }, 2000);
+    contactForm.addEventListener("submit", () => {
+      // the form now really sends to info@sgen.in
+      const btn = contactForm.querySelector("button[type='submit']");
+      if (btn) btn.textContent = "Sending...";
     });
   }
 });
